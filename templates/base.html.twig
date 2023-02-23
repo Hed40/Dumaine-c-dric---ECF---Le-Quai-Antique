@@ -1,19 +1,141 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Bienvenue au Quai Antique
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link href="{{ asset('assets/css/indexStyle.css') }}" rel="stylesheet"/>
+		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Le Quai Antique</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="{{ path('app_accueil') }}">Accueil</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_menus')}}">Nos menus</a>
+							</li>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Notre carte</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Réserver une table</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Membres
+							</a>
+							<ul class="dropdown-menu">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+								{% if app.User %}
+									<li>
+										<a class="dropdown-item" href="{{ path('app_account') }}">Mon compte</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="">Points de fidélités</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+									</li>
+								{% else %}
+									<li>
+										<a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a>
+									</li>
+								{% endif %}
+							</ul>
+						</li>
+					</li>
+				</ul>
+			</div>
+		</div>
+</nav>
+</header>
+{% block content %}
+{% endblock %}
+<footer class="container-fluid"><div class="py-3">
+<div class="main_timetables row">
+	<div class=" timetables_container col-sm-6 col-lg-2">
+		<h5 class="timetables_title">Horaires d'ouvertures</h5>
+		<hr>
+		<ul class="timetables_lists_container">
+			<li class="timetables_list">
+				<span class="day">Lundi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Mardi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Mercredi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Jeudi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Vendredi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Samedi</span>
+				<span class="timetables">
+					12h00 à 23h00</span>
+			</li>
+			<li class="timetables_list">
+				<span class="day">Dimanche</span>
+				<span class="timetables">
+					Fermé</span>
+			</li>
+		</ul>
+	</div>
+
+	<div class="newsletter_container col-md-5 mb-3">
+		<form>
+			<h5>Abonnez-vous à notre newsletter</h5>
+			<p class="d-flex flex-column flex-sm-row w-100 gap-2">Résumé mensuel de ce qui est nouveau et excitant de notre part.</p>
+			<div class="d-flex flex-column flex-sm-row w-100 gap-2">
+				<label for="newsletter1" class="visually-hidden" _msttexthash="291785" _msthash="54">Adresse courriel</label>
+				<input id="newsletter1" type="text" class="form-control" placeholder="Adresse courriel" _mstplaceholder="203853" _msthash="55">
+				<button class="btn btn-primary" type="button" _msttexthash="1002209" _msthash="56">S’inscrire</button>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="copyright flex-sm-row py-4 my-4 border-top">
+	<p>© 2022 Le Quai Antique Tous droits réservés.</p>
+</div>
+<div class="logo_social">
+	<ul class="list-unstyled d-flex">
+		<li class="ms-3">
+			<img class="link-dark" src="{{ asset('assets/img/reseaux/facebook.png') }}" width="40" height="40">
+		</li>
+	</img>
+</li>
+<li class="ms-3">
+	<img class="link-dark" src="{{ asset('assets/img/reseaux/instagram.png') }}" width="40" height="40">
+</li></img></li><li class="ms-3"><img class="link-dark" src="{{ asset('assets/img/reseaux/twitter.png') }}" width="40" height="40"></li></img></li></ul></div></div></div></footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script> </body></html>
