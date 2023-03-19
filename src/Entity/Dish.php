@@ -2,24 +2,28 @@
 
 namespace App\Entity;
 
-use App\Repository\StarterRepository;
+use App\Repository\DishRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: StarterRepository::class)]
-class Starter
+#[ORM\Entity(repositoryClass: DishRepository::class)]
+class Dish
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 36)]
+    #[ORM\Column(length: 255)]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'no')]
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    private ?string $price = null;
+
+    #[ORM\ManyToOne]
     private ?Categories $categorie = null;
 
     public function getId(): ?int
@@ -47,6 +51,18 @@ class Starter
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

@@ -9,14 +9,14 @@
 		<link
 		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
 		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" />
 		<link href="{{ asset('assets/css/indexStyle.css') }}" rel="stylesheet"/>
-		<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
 	</head>
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
 				<div class="container-fluid">
-					<a class="navbar-brand" href="#">Le Quai Antique</a>
+					<img class="navbar-brand logo_QA" src="{{ asset('assets/img/Logo_QA.png') }}"></img>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -33,7 +33,7 @@
 							<a class="nav-link" href="#">Notre carte</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Réserver une table</a>
+							<a class="nav-link" href="{{path('app_reservation')}}">Réserver une table</a>
 						</li>
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,6 +48,11 @@
 									<li>
 										<a class="dropdown-item" href="">Points de fidélités</a>
 									</li>
+								{% if is_granted('ROLE_ADMIN') %}
+									<li>
+										<a class="dropdown-item" href="{{ path('app_admin') }}">Administration</a>
+									</li>
+									{% endif %}
 									<li>
 										<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
 									</li>
@@ -68,6 +73,7 @@
 </nav>
 </header>
 {% block content %}
+
 {% endblock %}
 <footer class="container-fluid"><div class="py-3">
 <div class="main_timetables row">
@@ -138,4 +144,8 @@
 <li class="ms-3">
 	<img class="link-dark" src="{{ asset('assets/img/reseaux/instagram.png') }}" width="40" height="40">
 </li></img></li><li class="ms-3"><img class="link-dark" src="{{ asset('assets/img/reseaux/twitter.png') }}" width="40" height="40"></li></img></li></ul></div></div></div></footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script><script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script> </body></html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/reservation.js') }}"></script>
+
+ </body></html>

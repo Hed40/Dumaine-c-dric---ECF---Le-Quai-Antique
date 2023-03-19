@@ -7,6 +7,10 @@ main {
   background-color: black;
 }
 
+body{
+  
+}
+
 .btn-primary{
 
 }
@@ -102,4 +106,12 @@ footer {
 .logo_social {
   display: flex;
   justify-content: center;
+}
+
+.navbar-brand{
+  width: 10em;
+}
+
+.card-title{
+  background-color: var(--bs-card-cap-bg);
 }

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Le Quai Antique - Nos Menus
+{% block title %}Quai Antique - Nos Menus
 {% endblock %}
 
 {% block content %}
@@ -20,87 +20,126 @@
 			padding: 2px 6px;
 		}
 
-		.card-body, .menu-title {
+		.card-body,
+		.menu-title {
 			text-align: center;
+		}
+
+		.price_container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: solid 1px;
+			border-radius: 4px;
+			width: 6rem;
+			height: 3rem;
+			color: white;
+			background-color: brown;
+		}
+
+		.card-footer {
+			display: grid;
+			justify-content: center
 		}
 	</style>
 
 	<h1 class="menu-title">Nos menus</h1>
 	<div class="example-wrapper">
-		<div class="card" style="width: 25rem;">
-			<img src="{{ asset('assets/img/photo_0.jpg') }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h3 class="card-title"><b>Menu Burger</b></h3>
-				<p></p>
-				<h4 class="card-text">Formule gourmande</h4>
-				<p>Hamburger + Frites
-					<br>(Boeuf ou poulet)</p>
-				<p>+</p>
-				<p></p>
-				<p>Boisson au choix</p>
-				<p></p>
-				<p>Prix :</p>
-				<h4 class="card-text">Formule Americaine</h4>
-				<p>Hamburger + frites
-					<br>(Boeuf ou poulet)</p>
-				<e>* Double Steak</e>
-				<p>Prix :
-				</p>
+		<div class="col-md-2">
+			<div class="card h-100">
+				<img src="{{ asset('assets/img/photo_0.jpg') }}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h3 class="card-title">
+						<b>Menu Burger</b>
+					</h3>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule gourmande</b>
+					</h4>
+					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
+					<p>Boisson au choix</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule Americaine</b>
+					</h4>
+					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
+					<p>* Double Steak</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+				</div>
 			</div>
 		</div>
-		<div class="card" style="width: 25rem;">
-			<img src="{{ asset('assets/img/photo_5.jpg') }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h3 class="card-title">
-					<b>Menu Veggie</b>
-				</h3>
-				<p></p>
-				<h4 class="card-text">Formule gourmande</h4>
-				<p><b>------ Entrée ------</b></p>
-				<p>Salade verte</p>
-				<b>+</b>
-				<p>
-					<p><b>------ Plat ------</b></p>
-				</p>
-				<p>Tchoutchouka aux oeufs</p>
-				<b>+</b>
-				<p>
-					<p><b>------ Dessert ------</b></p>
-				</p>
-				<p>Tiramitsu à la Framboise</p>
-				<p>Prix :</p>
+		<div class="col-md-2">
+			<div class="card h-100">
+				<img src="{{ asset('assets/img/photo_2.jpg') }}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h3 class="card-title">
+						<b>Menu Burger</b>
+					</h3>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule gourmande</b>
+					</h4>
+					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
+					<p>Boisson au choix</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule Americaine</b>
+					</h4>
+					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
+					<p>* Double Steak</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+				</div>
 			</div>
 		</div>
-		<div class="card" style="width: 25rem;">
-			<img src="{{ asset('assets/img/photo_4.jpg') }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h3 class="card-title"><b>Menu Pasta</b></h3>
-				<p></p>
-				<h4 class="card-text">Formule gourmande</h4>
-				<p>Hamburger + frites (Boeuf ou poulet)</p>
-				<p>Prix :</p>
-				<h4 class="card-text">Formule
-				</h4>
-				<p></p>
-				<h4 class="card-text">Prix</h4>
-				<p></p>
-			</div>
-		</div>
-				<div class="card" style="width: 25rem;">
-			<img src="{{ asset('assets/img/photo_2.jpg') }}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h3 class="card-title"><b>Menu Pasta</b></h3>
-				<p></p>
-				<h4 class="card-text">Formule gourmande</h4>
-				<p>Hamburger + frites (Boeuf ou poulet)</p>
-				<p>Prix :</p>
-				<h4 class="card-text">Formule
-				</h4>
-				<p></p>
-				<h4 class="card-text">Prix</h4>
-				<p></p>
+		<div class="col-md-2">
+			<div class="card h-100">
+				<img src="{{ asset('assets/img/photo_3.jpg') }}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h3 class="card-title">
+						<b>Menu Burger</b>
+					</h3>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule gourmande</b>
+					</h4>
+					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
+					<p>Boisson au choix</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+					<hr>
+					<h4 class="card-text">
+						<b>Formule Americaine</b>
+					</h4>
+					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
+					<p>* Double Steak</p>
+					<h4 class="card-footer">
+						<p>Prix :
+							<div class="price_container">20 €</div>
+						</p>
+					</h4>
+				</div>
 			</div>
 		</div>
 	</div>
-
 {% endblock %}

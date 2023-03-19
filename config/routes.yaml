@@ -3,3 +3,13 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+# routes.yaml
+
+#app_reservation:
+   # path: /reservation
+   # controller: App\Controller\ReservationController::index
+   # methods: [GET, POST]
+    
+
+
