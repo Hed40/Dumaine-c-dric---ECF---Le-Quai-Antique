@@ -47,6 +47,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section("GESTION DES UTILISATEURS");
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Réservations', 'fas fa-check', Reservation::class);
         yield MenuItem::linkToCrud('Restaurant', 'fas fa-check', Restaurant::class);
@@ -54,5 +55,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégories', 'fas fa-check', Categories::class);
         yield MenuItem::linkToCrud('Entrées', 'fas fa-check', Starter::class);
         yield MenuItem::linkToCrud('Plats', 'fas fa-check', Dish::class);
+        
     }
 }

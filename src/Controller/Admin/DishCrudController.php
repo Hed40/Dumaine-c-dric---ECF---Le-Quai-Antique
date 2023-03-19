@@ -38,8 +38,10 @@ class DishCrudController extends AbstractCrudController
                         ->orderBy('c.name', 'ASC'); 
                         // On les trie par ordre alphabétique
                 })
-                ->setFormTypeOption('choice_label', function (Categories $categorie) {
-                    return $categorie->getName();
+                ->setFormTypeOption('choice_label', 'name')
+                //L'ajout de la méthode formatValue permet de récupérer le nom de la catégorie sélectionnée au lieu de son ID.
+                ->formatValue(function ($value, $entity) {
+                    return $entity->getCategorie()->getName();
                 }),
                 // On affiche le nom des catégories dans le choix
             MoneyField::new('price','Prix') 
