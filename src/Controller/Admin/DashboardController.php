@@ -3,9 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
-use App\Entity\Restaurant;
 use App\Entity\Categories;
 use App\Entity\Dish;
+use App\Entity\RestaurantSchedule;
 use App\Entity\Starter;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -50,7 +50,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section("GESTION DES UTILISATEURS");
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToCrud('Réservations', 'fas fa-check', Reservation::class);
-        yield MenuItem::linkToCrud('Restaurant', 'fas fa-check', Restaurant::class);
+        yield MenuItem::linkToCrud('Gestion Horaires', 'fas fa-check', RestaurantSchedule::class);
         yield MenuItem::section("GESTION DU RESTAURANT");
         yield MenuItem::linkToCrud('Catégories', 'fas fa-check', Categories::class);
         yield MenuItem::linkToCrud('Entrées', 'fas fa-check', Starter::class);

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\StarterRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StarterRepository::class)]
@@ -21,6 +22,9 @@ class Starter
 
     #[ORM\ManyToOne(inversedBy: 'no')]
     private ?Categories $categorie = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    private ?string $price = null;
 
     public function getId(): ?int
     {
@@ -59,6 +63,18 @@ class Starter
     public function setCategorie(?Categories $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

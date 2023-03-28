@@ -10,16 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\VarExporter\Internal\Values;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ReservationController extends AbstractController
 {
+
     #[Route('/reservation', name: 'app_reservation')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         // Instanciation d'un nouvel objet Reservation
         $reservation = new Reservation();
-        
         // Création d'un formulaire de type ReservationFormType
         $form = $this->createForm(ReservationFormType::class, $reservation);
         

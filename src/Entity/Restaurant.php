@@ -19,18 +19,25 @@ class Restaurant
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $opening_time = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $closed_time = null;
-
     #[ORM\OneToMany(mappedBy: 'Restaurant', targetEntity: CutleryMax::class)]
     private Collection $Cutlery_max;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $adresse = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phoneNumber = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
+    #[ORM\OneToMany(mappedBy: 'restaurant_id', targetEntity: RestaurantSchedule::class)]
+    private Collection $restaurantSchedules;
 
     public function __construct()
     {
         $this->Cutlery_max = new ArrayCollection();
+        $this->restaurantSchedules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -46,30 +53,6 @@ class Restaurant
     public function setName(string $Name): self
     {
         $this->Name = $Name;
-
-        return $this;
-    }
-
-    public function getOpeningTime(): ?\DateTimeInterface
-    {
-        return $this->opening_time;
-    }
-
-    public function setOpeningTime(\DateTimeInterface $opening_time): self
-    {
-        $this->opening_time = $opening_time;
-
-        return $this;
-    }
-
-    public function getClosedTime(): ?\DateTimeInterface
-    {
-        return $this->closed_time;
-    }
-
-    public function setClosedTime(\DateTimeInterface $closed_time): self
-    {
-        $this->closed_time = $closed_time;
 
         return $this;
     }
@@ -107,6 +90,72 @@ class Restaurant
     public function setCutleryMax(?Cutlerymax $cutlery_max): self
     {
         $this->cutlery_max = $cutlery_max;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getPhoneNumber(): ?string
+    {
+        return $this->phoneNumber;
+    }
+
+    public function setPhoneNumber(string $phoneNumber): self
+    {
+        $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RestaurantSchedule>
+     */
+    public function getRestaurantSchedules(): Collection
+    {
+        return $this->restaurantSchedules;
+    }
+
+    public function addRestaurantSchedule(RestaurantSchedule $restaurantSchedule): self
+    {
+        if (!$this->restaurantSchedules->contains($restaurantSchedule)) {
+            $this->restaurantSchedules->add($restaurantSchedule);
+            $restaurantSchedule->setRestaurantId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRestaurantSchedule(RestaurantSchedule $restaurantSchedule): self
+    {
+        if ($this->restaurantSchedules->removeElement($restaurantSchedule)) {
+            // set the owning side to null (unless already changed)
+            if ($restaurantSchedule->getRestaurantId() === $this) {
+                $restaurantSchedule->setRestaurantId(null);
+            }
+        }
 
         return $this;
     }

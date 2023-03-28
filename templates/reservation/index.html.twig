@@ -72,4 +72,47 @@
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
+</div>
+    <div id="availability-message"></div>
+    <div id="calendar"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+            // Initialiser le calendrier
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                selectable: true,
+                select: function(start, end) {
+                    // Mettre à jour les champs date et heure avec les valeurs sélectionnées dans le calendrier
+                    $('#reservation_date').val(start.format('YYYY-MM-DD'));
+                    $('#reservation_heure').val(start.format('HH:mm'));
+                }
+            });
+
+            // Vérifier la disponibilité en temps réel lors de la soumission du formulaire
+            $('#check-availability-btn').click(function() {
+                $.ajax({
+                    url: '{{ path('reservation_check_availability') }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#reservation-form').serialize(),
+                    success: function(data) {
+                        if (data.available) {
+                            $('#availability-message').html('Une table est disponible à cette date et heure.');
+                        } else {
+                            $('#availability-message').html('Désolé, aucune table n\'est disponible à cette date et heure.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
