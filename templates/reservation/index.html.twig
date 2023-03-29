@@ -76,7 +76,9 @@
     <div id="availability-message"></div>
     <div id="calendar"></div>
 {% endblock %}
-
+{% block footer %}
+{% include 'footer/index.html.twig' %}
+{% endblock %}
 {% block javascripts %}
     {{ parent() }}
 

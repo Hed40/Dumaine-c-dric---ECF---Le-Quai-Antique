@@ -75,77 +75,12 @@
 {% block content %}
 
 {% endblock %}
-<footer class="container-fluid"><div class="py-3">
-<div class="main_timetables row">
-	<div class=" timetables_container col-sm-6 col-lg-2">
-		<h5 class="timetables_title">Horaires d'ouvertures</h5>
-		<hr>
-		<ul class="timetables_lists_container">
-			<li class="timetables_list">
-				<span class="day">Lundi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Mardi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Mercredi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Jeudi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Vendredi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Samedi</span>
-				<span class="timetables">
-					12h00 à 23h00</span>
-			</li>
-			<li class="timetables_list">
-				<span class="day">Dimanche</span>
-				<span class="timetables">
-					Fermé</span>
-			</li>
-		</ul>
-	</div>
-
-	<div class="newsletter_container col-md-5 mb-3">
-		<form>
-			<h5>Abonnez-vous à notre newsletter</h5>
-			<p class="d-flex flex-column flex-sm-row w-100 gap-2">Résumé mensuel de ce qui est nouveau et excitant de notre part.</p>
-			<div class="d-flex flex-column flex-sm-row w-100 gap-2">
-				<label for="newsletter1" class="visually-hidden" _msttexthash="291785" _msthash="54">Adresse courriel</label>
-				<input id="newsletter1" type="text" class="form-control" placeholder="Adresse courriel" _mstplaceholder="203853" _msthash="55">
-				<button class="btn btn-primary" type="button" _msttexthash="1002209" _msthash="56">S’inscrire</button>
-			</div>
-		</form>
-	</div>
-</div>
-<div class="copyright flex-sm-row py-4 my-4 border-top">
-	<p>© 2022 Le Quai Antique Tous droits réservés.</p>
-</div>
-<div class="logo_social">
-	<ul class="list-unstyled d-flex">
-		<li class="ms-3">
-			<img class="link-dark" src="{{ asset('assets/img/reseaux/facebook.png') }}" width="40" height="40">
-		</li>
-	</img>
-</li>
-<li class="ms-3">
-	<img class="link-dark" src="{{ asset('assets/img/reseaux/instagram.png') }}" width="40" height="40">
-</li></img></li><li class="ms-3"><img class="link-dark" src="{{ asset('assets/img/reseaux/twitter.png') }}" width="40" height="40"></li></img></li></ul></div></div></div></footer>
+{% block footer %}
+{% include 'footer/index.html.twig' %}
+{% endblock %}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
 <script src="{{ asset('assets/js/reservation.js') }}"></script>
 
- </body></html>
+ </body>
+ </html>

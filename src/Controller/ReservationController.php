@@ -43,6 +43,7 @@ class ReservationController extends AbstractController
         // Affichage de la page de réservation avec le formulaire
         return $this->render('reservation/index.html.twig', [
             'form' => $form->createView(),
+            'restaurantSchedules' => 'FooterController'
         ]);
         
     }
