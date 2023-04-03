@@ -21,17 +21,21 @@ class Categories
     #[ORM\ManyToMany(targetEntity: Starter::class, mappedBy: 'categories')]
     private Collection $starters;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Starter::class)]
-    private Collection $no;
-
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Dish::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Dish::class)] 
     private Collection $dishes;
+
+    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Drinks::class)]
+    private Collection $drinks;
+
+    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Desserts::class)]
+    private Collection $desserts;
 
     public function __construct()
     {
         $this->starters = new ArrayCollection();
-        $this->no = new ArrayCollection();
         $this->dishes = new ArrayCollection();
+        $this->drinks = new ArrayCollection();
+        $this->desserts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -79,36 +83,6 @@ class Categories
     }
 
     /**
-     * @return Collection<int, Starter>
-     */
-    public function getNo(): Collection
-    {
-        return $this->no;
-    }
-
-    public function addNo(Starter $no): self
-    {
-        if (!$this->no->contains($no)) {
-            $this->no->add($no);
-            $no->setCategorie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNo(Starter $no): self
-    {
-        if ($this->no->removeElement($no)) {
-            // set the owning side to null (unless already changed)
-            if ($no->getCategorie() === $this) {
-                $no->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, Dish>
      */
     public function getDishes(): Collection
@@ -132,6 +106,66 @@ class Categories
             // set the owning side to null (unless already changed)
             if ($dish->getCategorie() === $this) {
                 $dish->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Drinks>
+     */
+    public function getDrinks(): Collection
+    {
+        return $this->drinks;
+    }
+
+    public function addDrink(Drinks $drink): self
+    {
+        if (!$this->drinks->contains($drink)) {
+            $this->drinks->add($drink);
+            $drink->setType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDrink(Drinks $drink): self
+    {
+        if ($this->drinks->removeElement($drink)) {
+            // set the owning side to null (unless already changed)
+            if ($drink->getType() === $this) {
+                $drink->setType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Desserts>
+     */
+    public function getDesserts(): Collection
+    {
+        return $this->desserts;
+    }
+
+    public function addDessert(Desserts $dessert): self
+    {
+        if (!$this->desserts->contains($dessert)) {
+            $this->desserts->add($dessert);
+            $dessert->setType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDessert(Desserts $dessert): self
+    {
+        if ($this->desserts->removeElement($dessert)) {
+            // set the owning side to null (unless already changed)
+            if ($dessert->getType() === $this) {
+                $dessert->setType(null);
             }
         }
 

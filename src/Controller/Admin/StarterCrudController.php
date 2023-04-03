@@ -51,11 +51,6 @@ class StarterCrudController extends AbstractCrudController
                 ->setStoredAsCents(false),
             // On stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
             // dans la méthode configureFields de StarterCrudController
-            ImageField::new('image', 'Image')
-                ->setBasePath('uploads/images/') // chemin où les images sont stockées
-                ->setUploadDir('public/uploads/images/') // chemin où les images sont chargées
-                ->setUploadedFileNamePattern('[randomhash].[extension]') // modèle de nom de fichier d'image téléchargé
-                ->setRequired(false), // le champ n'est pas obligatoire
         ];
     }
 }

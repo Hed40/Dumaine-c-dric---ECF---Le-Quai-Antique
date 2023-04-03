@@ -4,20 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Form\ReservationFormType;
+use App\Repository\RestaurantScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-
 class ReservationController extends AbstractController
 {
 
     #[Route('/reservation', name: 'app_reservation')]
-    public function index(Request $request, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, EntityManagerInterface $entityManager,RestaurantScheduleRepository $restaurantScheduleRepository): Response
     {
+                // Récupérez les horaires des restaurants ici
+                $restaurantSchedules = $restaurantScheduleRepository->findAll();
         // Instanciation d'un nouvel objet Reservation
         $reservation = new Reservation();
         // Création d'un formulaire de type ReservationFormType
@@ -43,7 +44,7 @@ class ReservationController extends AbstractController
         // Affichage de la page de réservation avec le formulaire
         return $this->render('reservation/index.html.twig', [
             'form' => $form->createView(),
-            'restaurantSchedules' => 'FooterController'
+            'restaurantSchedules' => $restaurantSchedules,
         ]);
         
     }
@@ -55,7 +56,7 @@ class ReservationController extends AbstractController
         return $this->render('reservation/success.html.twig');
     }
     
-    #[Route('/reservation', name: 'reservation')]
+    #[Route('/reservation', name: 'check-availability')]
     public function available(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
         // Récupération de la date et de l'heure envoyées en AJAX
@@ -69,9 +70,9 @@ class ReservationController extends AbstractController
         
         // Si la réservation existe, retourner un message indiquant que le créneau est occupé
         if ($reservation) {
-            return new JsonResponse(['#availability' => 'table NOT available'], Response::HTTP_CONFLICT);
+            return new JsonResponse(['#availability' => 'Créneau non disponible'], Response::HTTP_CONFLICT);
         }
         // Si la réservation n'existe pas, retourner un message indiquant que le créneau est disponible
-        return new JsonResponse(['#availability' => 'table available'], Response::HTTP_OK);
+        return new JsonResponse(['#availability' => 'Créneau disponible'], Response::HTTP_OK);
     }
 }

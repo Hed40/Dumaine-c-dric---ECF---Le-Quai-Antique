@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
+use Doctrine\Common\Collections\Expr\Value;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -111,7 +112,7 @@ class ReservationFormType extends AbstractType
                     '13h30' => '13:30:00',
                     '13h45' => '13:45:00',
                     '14h00' => '14:00:00',
-                    '15h00' => '14:00:00',
+                    '15h00' => '15:00:00',
                 ],
             ])
             ->add('allergie', TextareaType::class, [

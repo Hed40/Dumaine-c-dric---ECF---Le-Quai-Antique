@@ -49,13 +49,13 @@
 					</div>
 					<div class="form-group mb-3">
 						{{ form_label(form.date) }}
-						{{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+						{{ form_widget(form.date, {'attr': {'class': 'form-control', 'value' : 'date'}}) }}
 						{{ form_errors(form.date) }}
 
 					</div>
 					<div class="form-group mb-3">
 						{{ form_label(form.heure) }}
-						{{ form_widget(form.heure, {'attr': {'class': 'form-control'}}) }}
+						{{ form_widget(form.heure, {'attr': {'class': 'form-control', 'value' : 'heure'}}) }}
 					</div>
 					<div class="form-group mb-3">
 						{{ form_label(form.allergie) }}

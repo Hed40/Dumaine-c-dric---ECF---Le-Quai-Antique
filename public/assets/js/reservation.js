@@ -8,10 +8,10 @@ $(document).ready(function() {
             method: 'POST',
             data: { date: date, heure: heure },
             success: function(data) {
-                if (data['#availability'] === 'table available')  {
-                    $('#availability').html('table available');
+                if (data['#availability'] === 'Créneau disponible')  {
+                    $('#availability').html('Créneau disponible');
                 } else {
-                    $('#availability').html('table NOT available');
+                    $('#availability').html('Créneau non disponible');
                 }
             },
             error: function() {

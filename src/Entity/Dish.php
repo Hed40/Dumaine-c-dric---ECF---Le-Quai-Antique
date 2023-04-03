@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DishRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,14 @@ class Dish
 
     #[ORM\ManyToOne]
     private ?Categories $categorie = null;
+
+    #[ORM\OneToMany(mappedBy: 'Dish', targetEntity: SetMenu::class, orphanRemoval: true)] // orphanRemoval: true = supprime les SetMenu qui n'ont plus de Dish
+    private Collection $setMenus;
+
+    public function __construct()
+    {
+        $this->setMenus = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +85,36 @@ class Dish
     public function setCategorie(?Categories $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SetMenu>
+     */
+    public function getSetMenus(): Collection
+    {
+        return $this->setMenus;
+    }
+
+    public function addSetMenu(SetMenu $setMenu): self
+    {
+        if (!$this->setMenus->contains($setMenu)) {
+            $this->setMenus->add($setMenu);
+            $setMenu->setDish($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSetMenu(SetMenu $setMenu): self
+    {
+        if ($this->setMenus->removeElement($setMenu)) {
+            // set the owning side to null (unless already changed)
+            if ($setMenu->getDish() === $this) {
+                $setMenu->setDish(null);
+            }
+        }
 
         return $this;
     }

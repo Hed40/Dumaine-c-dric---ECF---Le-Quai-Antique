@@ -5,6 +5,10 @@ namespace App\Controller\Admin;
 use App\Entity\Reservation;
 use App\Entity\Categories;
 use App\Entity\Dish;
+use App\Entity\Drinks;
+use App\Entity\Menus;
+use App\Entity\SetMenu;
+use App\Entity\Desserts;
 use App\Entity\RestaurantSchedule;
 use App\Entity\Starter;
 use App\Entity\User;
@@ -47,14 +51,21 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::section("GESTION DES UTILISATEURS");
+        yield MenuItem::section("GESTION DES UTILISATEURS", "fa fa-users");
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
-        yield MenuItem::linkToCrud('Réservations', 'fas fa-check', Reservation::class);
-        yield MenuItem::linkToCrud('Gestion Horaires', 'fas fa-check', RestaurantSchedule::class);
-        yield MenuItem::section("GESTION DU RESTAURANT");
-        yield MenuItem::linkToCrud('Catégories', 'fas fa-check', Categories::class);
-        yield MenuItem::linkToCrud('Entrées', 'fas fa-check', Starter::class);
-        yield MenuItem::linkToCrud('Plats', 'fas fa-check', Dish::class);
-        
+        yield MenuItem::submenu("GESTION DU RESTAURANT","fa fa-clock-o")->setSubItems([
+            MenuItem::linkToCrud('Horaires', 'fa fa-clock-o', RestaurantSchedule::class),
+            MenuItem::linkToCrud('Réservations', 'fa fa-check-square-o', Reservation::class),
+        ]);
+        yield MenuItem::subMenu('GESTION DE LA CARTE DU RESTAURANT', 'fa fa-cutlery')->setSubItems([
+            MenuItem::linkToCrud('Entrées', 'fa fa-cutlery', Starter::class),
+            MenuItem::linkToCrud('Plats', 'fa fa-cutlery', Dish::class),
+            MenuItem::linkToCrud('Desserts', 'fa fa-cutlery', Desserts::class),
+            MenuItem::linkToCrud('Boissons', 'fa fa-glass', Drinks::class),
+            MenuItem::linkToCrud('Menus', 'fa fa-cutlery', Menus::class),
+            MenuItem::linkToCrud('Formules', 'fa fa-cutlery', SetMenu::class)
+        ]);
+        yield MenuItem::section("GESTION DES PARAMETRES DE CARTE");
+        yield MenuItem::linkToCrud('Catégories de Produits', 'fa fa-product-hunt', Categories::class);
     }
 }

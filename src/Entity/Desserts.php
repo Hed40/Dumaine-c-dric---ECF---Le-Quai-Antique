@@ -2,33 +2,36 @@
 
 namespace App\Entity;
 
-use App\Repository\StarterRepository;
+use App\Repository\DessertsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: StarterRepository::class)]
-class Starter
+#[ORM\Entity(repositoryClass: DessertsRepository::class)]
+class Desserts
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 36)]
-    private ?string $title = null;
-
     #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\ManyToOne(inversedBy: 'desserts')]
+    private ?Categories $type = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'no')]
-    private ?Categories $categorie = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $allergene = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\OneToMany(mappedBy: 'starter', targetEntity: SetMenu::class, orphanRemoval: true)] // orphanRemoval: true = supprime les SetMenu qui n'ont plus de Dish
+    #[ORM\OneToMany(mappedBy: 'Dessert', targetEntity: SetMenu::class)]
     private Collection $setMenus;
 
     public function __construct()
@@ -41,14 +44,26 @@ class Starter
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getName(): ?string
     {
-        return $this->title;
+        return $this->name;
     }
 
-    public function setTitle(string $title): self
+    public function setName(string $name): self
     {
-        $this->title = $title;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getType(): ?Categories
+    {
+        return $this->type;
+    }
+
+    public function setType(?Categories $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
@@ -58,21 +73,21 @@ class Starter
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getCategorie(): ?Categories
+    public function getAllergene(): ?string
     {
-        return $this->categorie;
+        return $this->allergene;
     }
 
-    public function setCategorie(?Categories $categorie): self
+    public function setAllergene(?string $allergene): self
     {
-        $this->categorie = $categorie;
+        $this->allergene = $allergene;
 
         return $this;
     }
@@ -101,7 +116,7 @@ class Starter
     {
         if (!$this->setMenus->contains($setMenu)) {
             $this->setMenus->add($setMenu);
-            $setMenu->setStarter($this);
+            $setMenu->setDessert($this);
         }
 
         return $this;
@@ -111,8 +126,8 @@ class Starter
     {
         if ($this->setMenus->removeElement($setMenu)) {
             // set the owning side to null (unless already changed)
-            if ($setMenu->getStarter() === $this) {
-                $setMenu->setStarter(null);
+            if ($setMenu->getDessert() === $this) {
+                $setMenu->setDessert(null);
             }
         }
 
