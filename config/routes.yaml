@@ -10,6 +10,3 @@ controllers:
    # path: /reservation
    # controller: App\Controller\ReservationController::index
    # methods: [GET, POST]
-    
-
-

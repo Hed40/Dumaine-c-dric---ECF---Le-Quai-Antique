@@ -23,8 +23,8 @@ class StarterCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Titre'),
             // Champ de texte simple pour le titre de l'entrée
-            TextEditorField::new('description'),
-            // Champ de texte enrichi pour la description de l'entrée
+            TextField::new('description'),
+            // Champ de texte pour la description de l'entrée
             AssociationField::new('categorie', 'Catégories')
                 // Champ d'association pour la catégorie du plat
                 ->setRequired(true)

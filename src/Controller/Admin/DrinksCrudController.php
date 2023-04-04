@@ -44,7 +44,7 @@ class DrinksCrudController extends AbstractCrudController
 
             TextField::new('alcool_content', "Volume d'alcool"),
         // Champ de texte enrichi pour la description de la boisson
-            TextEditorField::new('description'),
+            TextField::new('description'),
 
         // On affiche le nom des catégories dans le choix
         MoneyField::new('price', 'Prix')

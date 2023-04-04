@@ -22,7 +22,7 @@ class DishCrudController extends AbstractCrudController
         return [
             TextField::new('title', 'Titre'),
             // Champ de texte simple pour le titre du plat
-            TextEditorField::new('description'),
+            TextField::new('description'),
             // Champ de texte enrichi pour la description du plat
             AssociationField::new('categorie', 'Catégories')
                 // Champ d'association pour la catégorie du plat

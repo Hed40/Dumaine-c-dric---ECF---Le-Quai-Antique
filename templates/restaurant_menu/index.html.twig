@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte du restaurant
+{% endblock %}
+
+{% block content %}
+	<main class="main_container container-fluid">
+		<div class="container-fluid">
+			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7">
+					<div>
+						<h1 class="headline" style="text-align: left;">La carte de votre restaurant !</h1>
+					
+					<a class="btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
+						<span>Contactez-nous</span>
+					</a>
+					</div>
+			</div>
+		</div>
+	</main>
+	<section class="restaurantCardSection container-fluid">
+		<div class="card bg-transparent">
+			<div class="card-body">
+				<div class="card-header">
+					<h1 class="MainCardTitle">LE QUAI ANTIQUE À LA CARTE</h1>
+					<hr>
+					<h2 class="subtitleMainCard">À TABLE !</h2>
+					<hr>
+					<div class="card-body mainMenu">
+						<div class="card bg-transparent starterCaps">
+							<div class="card-body starterCard">
+								<div class="card-header">
+									<h3 class="StarterTitle">NOS ENTRÉES</h3>
+									<div class="card-body starterList">
+										{% if starters is empty %}
+											<p>Aucune entrée n'a été trouvée.</p>
+										{% else %}
+											<div class="">
+												{% for starters in starters %}
+													<div class="list-group-item">
+														<div class="name">~
+															{{ starters.title }}</div>
+														<div class="arrow">
+															<span></span>
+														</div>
+														<div class="price">
+															{{ starters.price }}
+															€
+															<div class="TTC">TTC</div>
+														</div>
+													</div>
+													<div class="desc">{{ starters.description }}</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-transparent starterCaps">
+							<div class="card-body starterCard">
+								<div class="card-header">
+									<h3 class="StarterTitle">NOS PLATS</h3>
+									<div class="card-body starterList">
+										{% if dish is empty %}
+											<p>Aucune entrée n'a été trouvée.</p>
+										{% else %}
+											<div class="">
+												{% for dish in dish %}
+													<div class="list-group-item">
+														<div class="name">~
+															{{ dish.title }}</div>
+														<div class="arrow">
+															<span></span>
+														</div>
+														<div class="price">
+															{{ dish.price }}
+															€
+															<div class="TTC">TTC</div>
+														</div>
+													</div>
+													<div class="desc">{{ dish.description }}</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-transparent starterCaps">
+							<div class="card-body starterCard">
+								<div class="card-header">
+									<h3 class="StarterTitle">NOS FORMULES</h3>
+									<div class="card-body starterList">
+										{% if setMenu is empty %}
+											<p>Aucune entrée n'a été trouvée.</p>
+										{% else %}
+											<div class="">
+												{% for setMenu in setMenu %}
+													<div class="list-group-item">
+														<div class="name">~
+															{{ setMenu.name }}</div>
+														<div class="arrow">
+															<span></span>
+														</div>
+														<div class="price">
+															{{ setMenu.price }}
+															€
+															<div class="TTC">TTC</div>
+														</div>
+													</div>
+													<div class="desc">{{ setMenu.starter.title }} + {{ setMenu.Dish.title}} + {{ setMenu.Dessert.name}}</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

@@ -10,6 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
+/**
+ * Summary of DessertsCrudController
+ */
 class DessertsCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -40,7 +43,7 @@ class DessertsCrudController extends AbstractCrudController
             ->formatValue(function ($value, $entity) {
                 return $entity->gettype()->getName();
             }),
-            TextEditorField::new('description'),
+            TextField::new('description'),
             TextField::new('allergene', 'Allergenes éventuels'),
             MoneyField::new('price', 'Prix')
             // Champ de monnaie pour le prix de la boisson

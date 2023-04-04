@@ -4,142 +4,64 @@
 {% endblock %}
 
 {% block content %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 100%;
-			width: 95%;
-			font: 16px / 1.5 sans-serif;
-			display: flex;
-			justify-content: center;
-			flex-wrap: wrap;
-			gap: 15px;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-
-		.card-body,
-		.menu-title {
-			text-align: center;
-		}
-
-		.price_container {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			border: solid 1px;
-			border-radius: 4px;
-			width: 6rem;
-			height: 3rem;
-			color: white;
-			background-color: brown;
-		}
-
-		.card-footer {
-			display: grid;
-			justify-content: center
-		}
-	</style>
-
-	<h1 class="menu-title">Nos menus</h1>
-	<div class="example-wrapper">
-		<div class="col-md-2">
-			<div class="card h-100">
-				<img src="{{ asset('assets/img/photo_0.jpg') }}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h3 class="card-title">
-						<b>Menu Burger</b>
-					</h3>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule gourmande</b>
-					</h4>
-					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
-					<p>Boisson au choix</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule Americaine</b>
-					</h4>
-					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
-					<p>* Double Steak</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
+</style>
+<main class="main_container container-fluid">
+	<div class="container-fluid">
+		<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
+			<div>
+				<div>
+					<h1 class="headline" style="text-align: left;">Retrouvez nos menus !</h1>
 				</div>
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="card h-100">
-				<img src="{{ asset('assets/img/photo_2.jpg') }}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h3 class="card-title">
-						<b>Menu Burger</b>
-					</h3>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule gourmande</b>
-					</h4>
-					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
-					<p>Boisson au choix</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule Americaine</b>
-					</h4>
-					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
-					<p>* Double Steak</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-2">
-			<div class="card h-100">
-				<img src="{{ asset('assets/img/photo_3.jpg') }}" class="card-img-top" alt="...">
-				<div class="card-body">
-					<h3 class="card-title">
-						<b>Menu Burger</b>
-					</h3>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule gourmande</b>
-					</h4>
-					<p>Hamburger + Frites<br>(Boeuf ou poulet)</p>
-					<p>Boisson au choix</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
-					<hr>
-					<h4 class="card-text">
-						<b>Formule Americaine</b>
-					</h4>
-					<p>Hamburger + frites<br>(Boeuf ou poulet)</p>
-					<p>* Double Steak</p>
-					<h4 class="card-footer">
-						<p>Prix :
-							<div class="price_container">20 €</div>
-						</p>
-					</h4>
-				</div>
+				<a class="btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
+					<span>Réservez une table</span>
+				</a>
 			</div>
 		</div>
 	</div>
-{% endblock %}
+</main>
+<section class="restaurantCardSection container-fluid">
+	<div class="card bg-transparent starterCaps">
+		<div class="card-body starterCard">
+			<div class="card-header">
+				<h3 class="StarterTitle">NOS MENUS</h3>
+				<div class="card-body menuList">
+					{% if menus is empty %}
+						<p>Aucune entrée n'a été trouvée.</p>
+					{% else %}
+						<div class="">
+							{% for menus in menus %}
+								<div class="Title">
+									<div class="menuTitle">~
+										{{ menus.name }}
+										~</div>
+									<div class="">
+										<span></span>
+									</div>
+								</div>
+								<div class="nameMenu">{{ menus.LunchSetMenu.name }}</div>
+								<div class="descMenu">{{ menus.LunchSetMenu.starter.title }}
+								+
+								{{ menus.LunchSetMenu.dish.title }}
+								+
+								{{ menus.LunchSetMenu.dessert.name }}</div>
+								<div class="priceMenu">{{ menus.LunchSetMenu.price }}
+									€<div class="TTC">TTC</div>
+								</div>
+								<hr>
+								<div class="nameMenu">{{ menus.DinerSetMenu.name }}</div>
+								<div class="descMenu">{{ menus.DinerSetMenu.starter.title }}
+								+
+								{{ menus.DinerSetMenu.dish.title }}
+								+
+								{{ menus.DinerSetMenu.dessert.name }}</div>
+								<div class="priceMenu">{{ menus.DinerSetMenu.price }}
+									€<div class="TTC">TTC</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</div></div></div></div></div></section>{% endblock %}
