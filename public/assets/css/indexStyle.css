@@ -343,6 +343,24 @@ footer {
   padding-bottom: 0;
 }
 
+/*change couleur background des boutons*/
+.navbar-nav .nav-link:hover,
+.navbar-nav .active,
+.dropdown-item:hover
+{
+  background-color: #555;
+  color: #fff;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+  color: #fff;
+}
+
+.active{
+  background-color: #555;
+  color: #fff;
+}
+
 /*VERSION MOBILE*/
 @media only screen and (max-width: 850px) {
   .starterCaps {
@@ -365,5 +383,11 @@ footer {
   .headline {
     display: flex;
     padding-bottom: 30px;
+  }
+/*change couleur background des boutons*/
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:active {
+    background-color: #555;
+    color: #fff;
   }
 }
