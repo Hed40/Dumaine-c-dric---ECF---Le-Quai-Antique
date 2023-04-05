@@ -38,14 +38,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
-
     #[ORM\ManyToOne(inversedBy: 'Reserved_by')]
     private ?Reservation $Reservation = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
     private Collection $reservations;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $guestsNumber = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $allergies = null;
 
     public function __construct()
     {
@@ -144,18 +147,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
-
     public function getReservation(): ?reservation
     {
         return $this->Reservation;
@@ -194,6 +185,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $reservation->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGuestsNumber(): ?int
+    {
+        return $this->guestsNumber;
+    }
+
+    public function setGuestsNumber(?int $guestsNumber): self
+    {
+        $this->guestsNumber = $guestsNumber;
+
+        return $this;
+    }
+
+    public function getAllergies(): ?string
+    {
+        return $this->allergies;
+    }
+
+    public function setAllergies(string $allergies): self
+    {
+        $this->allergies = $allergies;
 
         return $this;
     }

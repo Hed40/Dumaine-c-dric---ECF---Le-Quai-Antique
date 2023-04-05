@@ -6,10 +6,15 @@
 }
 
 main {
-  height: 600px;
+  min-height: 700px;
 }
 
 body {
+  padding-top: 75px; /* Ajoute une marge supérieure pour éviter que le contenu ne soit masqué par la navbar fixe */
+}
+
+nav{
+background-image: url("../img/snack.jpg");
 }
 
 h1,
@@ -21,7 +26,7 @@ h5 {
 }
 
 .logo_QA{
-
+position: relative;
 }
 
 .main_container {
@@ -35,9 +40,15 @@ h5 {
   background-size: cover;
 }
 
+.schudeleContainer,
+.loginContainer,
+.registerContainer{
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 .restaurantCardSection {
   display: flex;
-  color: #f5f5f5;
+  color: #ffffff;
   background-color: #000000;
   flex-direction: column;
   justify-content: center;
@@ -349,6 +360,11 @@ footer {
 .dropdown-item:hover
 {
   background-color: #555;
+  color: #fff;
+}
+
+.navbar-toggler-icon ,
+.navbar-light .nav-link {
   color: #fff;
 }
 
