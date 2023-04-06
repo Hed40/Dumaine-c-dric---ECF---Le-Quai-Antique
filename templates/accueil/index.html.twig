@@ -1,18 +1,46 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Quai Antique - Notre catre
+{% endblock %}
 {% block content %}
 	<main class="main_container container-fluid">
 		<div class="container-fluid">
 			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
-				<div>
-					<div>
-						<h1 class="headline" style="text-align: left;">Bienvenue au Quai Antique !</h1>
-					</div>
-					<a class="btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
+				<div class="groupTitleBtn">
+					<h1 class="headline" style="text-align: left;">Bienvenue au Quai Antique !</h1>
+					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
 						<span>Réservez une table</span>
 					</a>
 				</div>
 			</div>
 		</div>
 	</main>
-{% endblock %}
+	<section class="restaurantCardSection container-fluid">
+		<div class="card bg-transparent">
+			<div class="card-body">
+				<div class="card-header">
+					<h1 class="MainCardTitle">LE QUAI ANTIQUE</h1>
+					<hr>
+					<h2 class="subtitleMainCard">~ NOS PLATS LES PLUS APPRÉCIÉS ~</h2>
+					<hr>
+					<div class="card-body mainMenu">
+					<div class="card bg-transparent starterCaps">
+						{% if images is empty %}
+							<p class="noEntry">Aucune galerie n'a été trouvée.</p>
+						{% else %}
+							{% for image in images %}
+								<figure class="galeryCub col-md-2">
+									<img class="galeryImg" src="/uploads/images/gallery/{{image.illustration}}"/>
+									<figcaption class="galeryBody">
+										<h3 class="galeryCardtitle">{{image.titre}}</h3>
+										<p class="card-text"></p>
+									</figcaption>
+								</figure>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				</div>
+			{% endif %}
+		</section>
+	{% endblock %}

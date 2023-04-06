@@ -1,20 +1,16 @@
-
-  @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
 
 * {
   margin: 0;
 }
 
 main {
+
   min-height: 700px;
 }
 
-body {
-  padding-top: 75px; /* Ajoute une marge supérieure pour éviter que le contenu ne soit masqué par la navbar fixe */
-}
-
-nav{
-background-image: url("../img/snack.jpg");
+nav {
+  background-image: url("../img/snack.jpg");
 }
 
 h1,
@@ -22,11 +18,11 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Cardo', serif;
+  font-family: "Cardo", serif;
 }
 
-.logo_QA{
-position: relative;
+.logo_QA {
+  position: relative;
 }
 
 .main_container {
@@ -41,9 +37,14 @@ position: relative;
 }
 
 .schudeleContainer,
-.loginContainer,
-.registerContainer{
+.registerContainer {
   background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 40px;
+}
+
+.loginContainer {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 30px;
 }
 
 .restaurantCardSection {
@@ -53,7 +54,6 @@ position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5%;
   background-image: url("../img/Bgardoise.png");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -211,12 +211,84 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   background-color: rgba(255, 255, 255, 0.6);
-  width: 50%;
+  width: 45%;
   height: 300px;
-  padding-left: 40px;
-  padding-top: 30px;
   border-radius: 4px;
 }
+
+
+/* Menu personnel*/
+
+.mainPersoCcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: black;
+  background-image: url("../img/snack.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.cptPerso{
+  display: flex;
+  justify-content: space-evenly
+
+}
+
+#cptPersoMenuLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 45%;
+  height: 600px;
+  border-radius: 4px;
+  margin-top: 35px;
+}
+
+#cptPersoMenuRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 45%;
+  height: 600px;
+  border-radius: 4px;
+  margin-top: 35px;
+  justify-content: flex-start;
+}
+
+.groupCptFormPersoLeft{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  flex-direction: column
+
+
+}
+
+.groupCptFormPersoRight{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  flex-direction: column
+
+
+}
+
+.mainCptFormPerso{
+  display: flex;
+  align-items: flex-start;
+  width: 80%;
+  gap: 50px;
+
+}
+
+.cptTitle{
+  margin-top: 40px;
+}
+
 /*MENUS - CARTE*/
 
 .list-group-item {
@@ -227,6 +299,20 @@ footer {
   background: transparent !important;
   color: white;
 }
+
+/* Page Menus */
+.menuCaps{
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.MenusCard{
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  /*border-image: url("../img/Crayon.svg") 20 / 20px 100px / 1 round;*/
+  border-radius: 8px;
+}
+
 .starterCaps {
   display: flex;
   width: 50%;
@@ -306,7 +392,7 @@ footer {
   font-size: 0.5rem;
 }
 
-.menuList{
+.menuList {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -316,33 +402,33 @@ footer {
 .menuTitle,
 .nameMenu,
 .descMenu,
-.priceMenu{
+.priceMenu {
   display: flex;
   justify-content: center;
   padding-bottom: 5px;
 }
 
-.Title{
+.Title {
   font-size: 2rem;
 }
 
-.menuTitle{
+.menuTitle {
   font-size: 2rem;
 }
 
-.nameMenu{
+.nameMenu {
   font-size: 1.5rem;
 }
 
-.descMenu{
+.descMenu {
   font-size: 1.2rem;
 }
 
-.menuName{
+.menuName {
   font-size: 1rem;
 }
 
-.priceMenu{
+.priceMenu {
   font-size: 1.5rem;
 }
 
@@ -357,23 +443,146 @@ footer {
 /*change couleur background des boutons*/
 .navbar-nav .nav-link:hover,
 .navbar-nav .active,
-.dropdown-item:hover
-{
+.dropdown-item:hover {
   background-color: #555;
   color: #fff;
 }
 
-.navbar-toggler-icon ,
+.navbar-toggler-icon,
 .navbar-light .nav-link {
   color: #fff;
 }
 
-.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
   color: #fff;
 }
 
-.active{
+.active {
   background-color: #555;
+  color: #fff;
+}
+
+aside {
+  background-color: transparent;
+  background-image: url("../img/Bgardoise.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.galeryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.galeryCub {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #000000 solid 1px;
+  border-radius: 5px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.galeryImg {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  scale: 1.15;
+  transition: opacity 0.25s, scale 0.35s;
+}
+
+.galeryBody {
+  position: absolute;
+  inset: 0;
+  padding: 50px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+  justify-content: center;
+}
+
+.galeryBody::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 2px solid #fff;
+  opacity: 0;
+  scale: 1.25;
+  transition: opacity 0.25s, scale 0.25s;
+}
+
+.galeryCub:hover .galeryImg {
+  opacity: 0.5;
+  scale: 1;
+}
+
+.galeryCub:hover .galeryCardtitle {
+  display: flex;
+  opacity: 1;
+  scale: 1;
+}
+
+.galeryCardtitle {
+  display: none;
+  font-size: 2rem;
+}
+
+.galeryTitleContainer {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #555;
+  height: 100px;
+}
+
+.galeryTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.scheduleButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+.groupTitleBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.groupPerso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.noEntry{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   color: #fff;
 }
 
@@ -400,7 +609,7 @@ footer {
     display: flex;
     padding-bottom: 30px;
   }
-/*change couleur background des boutons*/
+  /*change couleur background des boutons*/
   .navbar-nav .nav-link:hover,
   .navbar-nav .nav-link:active {
     background-color: #555;

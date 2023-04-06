@@ -2,66 +2,71 @@
 
 {% block title %}Quai Antique - Nos Menus
 {% endblock %}
-
 {% block content %}
-</style>
-<main class="main_container container-fluid">
-	<div class="container-fluid">
-		<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
-			<div>
-				<div>
-					<h1 class="headline" style="text-align: left;">Retrouvez nos menus !</h1>
+	<main class="main_container container-fluid">
+		<div class="container-fluid">
+			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
+				<div class="groupTitleBtn">
+					<h1 class="headline">Notre choix de menus !</h1>
+					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
+						<span>Réservez une table</span>
+					</a>
 				</div>
-				<a class="btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
-					<span>Réservez une table</span>
-				</a>
 			</div>
 		</div>
-	</div>
-</main>
+	</main>
 <section class="restaurantCardSection container-fluid">
 	<div class="card bg-transparent starterCaps">
-		<div class="card-body starterCard">
+		<div class="card-body mainMenu">
 			<div class="card-header">
-				<h3 class="StarterTitle">NOS MENUS</h3>
+				<h1 class="MainCardTitle">LE QUAI ANTIQUE VOUS PROPOSE :</h1>
+				<hr>
+				<h3 class="subtitleMainCard">~ MENUS ~</h3>
+				<hr>
 				<div class="card-body menuList">
 					{% if menus is empty %}
-						<p>Aucune entrée n'a été trouvée.</p>
+						<p class="noEntry">Aucun menu n'a été trouvée.</p>
 					{% else %}
 						<div class="">
 							{% for menus in menus %}
-								<div class="Title">
-									<div class="menuTitle">~
-										{{ menus.name }}
-										~</div>
-									<div class="">
-										<span></span>
+								<div class="card bg-transparent menuCaps">
+									<div class="card-body starterCard">
+										<div class="">
+											<div class="Title">
+												<div class="menuTitle">~
+													{{ menus.name }}
+													~</div>
+												<div class="">
+													<span></span>
+												</div>
+											</div>
+											<div class="nameMenu">{{ menus.LunchSetMenu.name }}</div>
+											<div class="descMenu">{{ menus.LunchSetMenu.starter.title }}
+												+
+												{{ menus.LunchSetMenu.dish.title }}
+												+
+												{{ menus.LunchSetMenu.dessert.name }}</div>
+											<div class="priceMenu">{{ menus.LunchSetMenu.price }}
+												€<div class="TTC">TTC</div>
+											</div>
+											<br>
+											<div class="nameMenu">{{ menus.DinerSetMenu.name }}</div>
+											<div class="descMenu">{{ menus.DinerSetMenu.starter.title }}
+												+
+												{{ menus.DinerSetMenu.dish.title }}
+												+
+												{{ menus.DinerSetMenu.dessert.name }}</div>
+											<div class="priceMenu">{{ menus.DinerSetMenu.price }}
+												€<div class="TTC">TTC</div>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="nameMenu">{{ menus.LunchSetMenu.name }}</div>
-								<div class="descMenu">{{ menus.LunchSetMenu.starter.title }}
-								+
-								{{ menus.LunchSetMenu.dish.title }}
-								+
-								{{ menus.LunchSetMenu.dessert.name }}</div>
-								<div class="priceMenu">{{ menus.LunchSetMenu.price }}
-									€<div class="TTC">TTC</div>
-								</div>
-								<hr>
-								<div class="nameMenu">{{ menus.DinerSetMenu.name }}</div>
-								<div class="descMenu">{{ menus.DinerSetMenu.starter.title }}
-								+
-								{{ menus.DinerSetMenu.dish.title }}
-								+
-								{{ menus.DinerSetMenu.dessert.name }}</div>
-								<div class="priceMenu">{{ menus.DinerSetMenu.price }}
-									€<div class="TTC">TTC</div>
-								</div>
-							</div>
-						{% endfor %}
-					</div>
-				{% endif %}
+							{% endfor %}
+						</div>
+					{% endif %}
+				</div>
 			</div>
 		</div>
 	</div>
-</div></div></div></div></div></section>{% endblock %}
+</div></div></div></div></section>{% endblock %}

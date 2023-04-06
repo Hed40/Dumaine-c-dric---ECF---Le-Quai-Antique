@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Reservation;
-use Doctrine\Common\Collections\Expr\Value;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -49,17 +48,17 @@ class ReservationFormType extends AbstractType
     {
         $builder
         ->add('Firstname', TextType::class, [
-            'label' => 'Votre nom',
-            'attr' => [
-                'class' => 'form-control',
-                'placeholder' => 'Votre nom ici'
-            ]
-        ])
-        ->add('Lastname', TextType::class, [
             'label' => 'Votre prénom',
             'attr' => [
                 'class' => 'form-control',
-                'placeholder' => 'Votre prénom ici'
+                'placeholder' => 'Veuillez saisir votre prénom'
+            ]
+        ])
+        ->add('Lastname', TextType::class, [
+            'label' => 'Votre nom',
+            'attr' => [
+                'class' => 'form-control',
+                'placeholder' => 'Veuillez saisir votre nom'
             ]
         ])
         ->add('phone_number', TextType::class, [
@@ -69,16 +68,17 @@ class ReservationFormType extends AbstractType
                 'placeholder' => 'N° de téléphone'
             ]
         ])
-        ->add('nombreCouverts', IntegerType::class, [
-            'label' => 'Nombre de couverts',
+        ->add('guestsNumber', IntegerType::class, [
+            'label' => 'Nombre de couverts par defaut',
             'attr' => [
                 'class' => 'form-control',
-                'placeholder' => 'Nombre de couverts'
+                'placeholder' => '',
+                'min' => 0, //  empêcher les valeurs négatives
             ],
             'constraints' => [
                 new GreaterThanOrEqual([
                     'value' => 1,
-                    'message' => 'Vous devez réserver au moins 1 couvert.',
+                    'message' => 'Le nombre de convives ne peut pas être inférieur à 1.',
                 ]),
             ],
         ])

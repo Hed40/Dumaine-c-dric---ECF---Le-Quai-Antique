@@ -41,18 +41,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToOne(inversedBy: 'Reserved_by')]
     private ?Reservation $Reservation = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Reservation::class)]
-    private Collection $reservations;
-
     #[ORM\Column(nullable: true)]
     private ?int $guestsNumber = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $allergies = null;
+    private ?string $allergie = null;
+
+    private Collection $loggedReservationUser;
 
     public function __construct()
     {
-        $this->reservations = new ArrayCollection();
+        $this->loggedReservationUser = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -159,36 +158,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
-    {
-        return $this->reservations;
-    }
-
-    public function addReservation(Reservation $reservation): self
-    {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations->add($reservation);
-            $reservation->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getUser() === $this) {
-                $reservation->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getGuestsNumber(): ?int
     {
         return $this->guestsNumber;
@@ -201,14 +170,44 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAllergies(): ?string
+    public function getAllergie(): ?string
     {
-        return $this->allergies;
+        return $this->allergie;
     }
 
-    public function setAllergies(string $allergies): self
+    public function setAllergie(string $allergie): self
     {
-        $this->allergies = $allergies;
+        $this->allergie = $allergie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reservation>
+     */
+    public function getLoggedReservationUser(): Collection
+    {
+        return $this->loggedReservationUser;
+    }
+
+    public function addLoggedReservationUser(Reservation $loggedReservationUser): self
+    {
+        if (!$this->loggedReservationUser->contains($loggedReservationUser)) {
+            $this->loggedReservationUser->add($loggedReservationUser);
+            $loggedReservationUser->setReservationUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLoggedReservationUser(Reservation $loggedReservationUser): self
+    {
+        if ($this->loggedReservationUser->removeElement($loggedReservationUser)) {
+            // set the owning side to null (unless already changed)
+            if ($loggedReservationUser->getReservationUser() === $this) {
+                $loggedReservationUser->setReservationUser(null);
+            }
+        }
 
         return $this;
     }

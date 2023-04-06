@@ -2,18 +2,16 @@
 
 {% block title %}Carte du restaurant
 {% endblock %}
-
 {% block content %}
 	<main class="main_container container-fluid">
 		<div class="container-fluid">
-			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7">
-					<div>
-						<h1 class="headline" style="text-align: left;">La carte de votre restaurant !</h1>
-					
-					<a class="btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
-						<span>Contactez-nous</span>
+			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
+				<div class="groupTitleBtn">
+					<h1 class="headline" style="text-align: left;">Le Quai Antique à la carte !</h1>
+					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
+						<span>Réservez une table</span>
 					</a>
-					</div>
+				</div>
 			</div>
 		</div>
 	</main>
@@ -23,7 +21,7 @@
 				<div class="card-header">
 					<h1 class="MainCardTitle">LE QUAI ANTIQUE À LA CARTE</h1>
 					<hr>
-					<h2 class="subtitleMainCard">À TABLE !</h2>
+					<h2 class="subtitleMainCard">~ À TABLE ! ~</h2>
 					<hr>
 					<div class="card-body mainMenu">
 						<div class="card bg-transparent starterCaps">
@@ -32,7 +30,7 @@
 									<h3 class="StarterTitle">NOS ENTRÉES</h3>
 									<div class="card-body starterList">
 										{% if starters is empty %}
-											<p>Aucune entrée n'a été trouvée.</p>
+											<p class="noEntry">Aucune entrée n'a été trouvée.</p>
 										{% else %}
 											<div class="">
 												{% for starters in starters %}
@@ -62,7 +60,7 @@
 									<h3 class="StarterTitle">NOS PLATS</h3>
 									<div class="card-body starterList">
 										{% if dish is empty %}
-											<p>Aucune entrée n'a été trouvée.</p>
+											<p class="noEntry">Aucun plat n'a été trouvée.</p>
 										{% else %}
 											<div class="">
 												{% for dish in dish %}
@@ -92,7 +90,7 @@
 									<h3 class="StarterTitle">NOS FORMULES</h3>
 									<div class="card-body starterList">
 										{% if setMenu is empty %}
-											<p>Aucune entrée n'a été trouvée.</p>
+											<p class="noEntry">Aucune entrée n'a été trouvée.</p>
 										{% else %}
 											<div class="">
 												{% for setMenu in setMenu %}

@@ -23,7 +23,7 @@ class RegistrationFormType extends AbstractType
         $builder
 
         ->add('firstname', TextType::class, [
-            'label' => 'Prénom',
+            'label' => 'Votre prénom',
             'constraints'=> new Length([
                 'min'=> 2,
                 'max'=> 30
@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
         ])
         
         ->add('lastname', TextType::class, [
-            'label' => 'Nom',
+            'label' => 'Votre nom',
             'constraints'=> new Length([
                 'min'=> 2,
                 'max'=> 30
@@ -69,20 +69,20 @@ class RegistrationFormType extends AbstractType
             ])
 
             ->add('guestsNumber', IntegerType::class, [
-                'label' => 'Nombre de convives par defaut',
+                'label' => 'Nombre de couverts par defaut',
                 'attr' => [
                     'placeholder' => '',
                     'min' => 0, //  empêcher les valeurs négatives
                 ],
                 'constraints' => [
                     new GreaterThanOrEqual([
-                        'value' => 0,
-                        'message' => 'Le nombre de convives ne peut pas être inférieur à 0.'
+                        'value' => 1,
+                        'message' => 'Le nombre de convives ne peut pas être inférieur à 1.'
                     ])
                 ]
             ])
 
-            ->add('allergies', TextType::class, [
+            ->add('allergie', TextType::class, [
                 'label' => 'Des allergies eventuelles ?',
                 'attr' => [
                     'placeholder' => ''

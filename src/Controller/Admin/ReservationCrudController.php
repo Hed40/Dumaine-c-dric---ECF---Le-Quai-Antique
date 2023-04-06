@@ -27,7 +27,7 @@ class ReservationCrudController extends AbstractCrudController
             TextField::new('allergie'),
             DateField::new('date'),
             TextField::new('heure'),
-            IntegerField::new('nombreCouverts'),
+            IntegerField::new('guestsNumber'),
         ];
     }
 

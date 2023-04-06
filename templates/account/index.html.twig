@@ -1,16 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MemberController!{% endblock %}
+{% block title %}Hello MemberController!
+{% endblock %}
 
 {% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<main class="mainPersoCcontainer container-fluid">
+	<div class="cptPerso container-fluid">
+		<div id="cptPersoMenuLeft" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
+			<div class="groupTitleBtn">
+				<h1 class="headline" style="text-align: left;">Bienvenue dans votre espace client
+					{{app.User.firstname}}
+					!</h1>
+				<p style="text-align: left;">Ici vous pouvez consulter vos informations personnelles, réserver une table en mode VIP consulter vos dernières réservations.</p>
+				{{ form_start(form) }}
+				<div class="form-group mb-3">
+					{{ form_label(form.Firstname) }}
+					{{ form_widget(form.Firstname, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.Firstname) }}
+				</div>
+				<div class="form-group mb-3">
+					{{ form_label(form.Lastname) }}
+					{{ form_widget(form.Lastname, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.Lastname) }}
+				</div>
+				<div class="form-group mb-3">
+					{{ form_label(form.phone_number) }}
+					{{ form_widget(form.phone_number, {'attr': {'class': 'form-control'}}) }}
+					{{ form_errors(form.phone_number) }}
+				</div>
+			</div>
+		</div>
+		<div id="cptPersoMenuRight" class="col col-lg-3 col-sm-12 col-md-7 flexCol">
+			<h2 class="cptTitle" style="text-align: left;">Réservez votre table !</h2>
+			<div class="mainCptFormPerso">
+				<div class="groupCptFormPersoLeft">
+					<div class="form-group mb-3">
 
-<div class="example-wrapper">
-    <h1>Bienvenue {{app.User.firstname}} </h1>
+						{{ form_label(form.date) }}
+						{{ form_widget(form.date, {'attr': {'class': 'form-control', 'value' : 'date'}}) }}
+						{{ form_errors(form.date) }}
+					</div>
+					<div class="form-group mb-3">
+						{{ form_label(form.heure) }}
+						{{ form_widget(form.heure, {'attr': {'class': 'form-control', 'value' : 'heure'}}) }}
+						{{ form_errors(form.heure) }}
+					</div>
 
-    Bienvenue dans votre espace client !
-</div>
-{% endblock %}
+				</div>
+				<div class="groupCptFormPersoRight">
+					<div class="form-group mb-3">
+						{{ form_label(form.guestsNumber) }}
+						{{ form_widget(form.guestsNumber, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form.guestsNumber) }}
+					</div>
+					<div class="form-group mb-3">
+						{{ form_label(form.allergie) }}
+						{{ form_widget(form.allergie, {'attr': {'class': 'form-control','style': 'resize:none;'}}) }}
+					</div>
+				</div>
+
+				{{ form_end(form) }}
+
+			</div>
+		</div>
+	</div>
+</main>
+<section>				<div class="form-group text-center">
+					<button type="submit" class="btn btn-primary px-4">Réserver</button>
+				</div>
+				<div id="availability-message"></div>
+				<div id="calendar"></div></div></div></div></div></section {% endblock %}

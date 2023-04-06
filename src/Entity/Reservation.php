@@ -17,7 +17,7 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $nombreCouverts = null;
+    private ?int $guestsNumber = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $allergie = null;
@@ -28,12 +28,6 @@ class Reservation
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'Reservation', targetEntity: User::class)]
-    private Collection $Reserved_by;
-
-    #[ORM\ManyToOne(inversedBy: 'Reservations')]
-    private ?User $user = null;
-
     #[ORM\Column(length: 255)]
     private ?string $Firstname = null;
 
@@ -43,24 +37,23 @@ class Reservation
     #[ORM\Column(length: 255)]
     private ?string $Phone_number = null;
 
-    public function __construct()
-    {
-        $this->Reserved_by = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'loggedReservationUser')]
+    private ?User $reservationUser = null;
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNombreCouverts(): ?int
+    public function getGuestsNumber(): ?int
     {
-        return $this->nombreCouverts;
+        return $this->guestsNumber;
     }
 
-    public function setNombreCouverts(?int $nombreCouverts): self
+    public function setGuestsNumber(?int $guestsNumber): self
     {
-        $this->nombreCouverts = $nombreCouverts;
+        $this->guestsNumber = $guestsNumber;
 
         return $this;
     }
@@ -101,48 +94,6 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getReservedBy(): Collection
-    {
-        return $this->Reserved_by;
-    }
-
-    public function addReservedBy(User $reservedBy): self
-    {
-        if (!$this->Reserved_by->contains($reservedBy)) {
-            $this->Reserved_by->add($reservedBy);
-            $reservedBy->setReservation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReservedBy(User $reservedBy): self
-    {
-        if ($this->Reserved_by->removeElement($reservedBy)) {
-            // set the owning side to null (unless already changed)
-            if ($reservedBy->getReservation() === $this) {
-                $reservedBy->setReservation(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     public function getFirstname(): ?string
     {
         return $this->Firstname;
@@ -175,6 +126,18 @@ class Reservation
     public function setPhoneNumber(string $Phone_number): self
     {
         $this->Phone_number = $Phone_number;
+
+        return $this;
+    }
+
+    public function getReservationUser(): ?User
+    {
+        return $this->reservationUser;
+    }
+
+    public function setReservationUser(?User $reservationUser): self
+    {
+        $this->reservationUser = $reservationUser;
 
         return $this;
     }
