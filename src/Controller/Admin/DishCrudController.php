@@ -6,7 +6,6 @@ use App\Entity\Dish;
 use App\Repository\CategoriesRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 
@@ -48,7 +47,7 @@ class DishCrudController extends AbstractCrudController
                 ->setCurrency('EUR')
                 // Devise de l'argent
                 ->setStoredAsCents(false),
-            // On stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
+            // stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
         ];
     }
 }

@@ -1,53 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MemberController!
+{% block title %}Mon espace personnel
 {% endblock %}
 
 {% block content %}
-<main class="mainPersoCcontainer container-fluid">
-	<div class="cptPerso container-fluid">
-		<div id="cptPersoMenuLeft" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
-			<div class="groupTitleBtn">
-				<h1 class="headline" style="text-align: left;">Bienvenue dans votre espace client
-					{{app.User.firstname}}
-					!</h1>
-				<p style="text-align: left;">Ici vous pouvez consulter vos informations personnelles, réserver une table en mode VIP consulter vos dernières réservations.</p>
+	<main class="mainPersoCcontainer container-fluid">
+		<section class="sectionContainerLeft">
+			<div class="mainSectionContainerLeft">
+				<div class="titleContainerLeft">
+					<h1 class="titleLeft">
+						~ Bienvenue dans votre espace client ~</h1>
+					<p>
+						Cet espace appartient à
+						<b>{{app.User.firstname}}
+							{{app.User.lastname}}</b>
+					</p>
+					<p class="description">Ici vous pouvez consulter vos informations personnelles, réserver une table en mode VIP consulter vos dernières réservations.</p>
+					<h3 class="description">Vos informations personnelles</h3>
+					<p>Vous pouvez modifier vos informations personnelles directement en utilisant les champs ci-dessous. Ces informations seront pris en compte lors de vos prochaines réservations.</p>
+				</div>
 				{{ form_start(form) }}
-				<div class="form-group mb-3">
-					{{ form_label(form.Firstname) }}
-					{{ form_widget(form.Firstname, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(form.Firstname) }}
-				</div>
-				<div class="form-group mb-3">
-					{{ form_label(form.Lastname) }}
-					{{ form_widget(form.Lastname, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(form.Lastname) }}
-				</div>
-				<div class="form-group mb-3">
-					{{ form_label(form.phone_number) }}
-					{{ form_widget(form.phone_number, {'attr': {'class': 'form-control'}}) }}
-					{{ form_errors(form.phone_number) }}
-				</div>
-			</div>
-		</div>
-		<div id="cptPersoMenuRight" class="col col-lg-3 col-sm-12 col-md-7 flexCol">
-			<h2 class="cptTitle" style="text-align: left;">Réservez votre table !</h2>
-			<div class="mainCptFormPerso">
-				<div class="groupCptFormPersoLeft">
+				<div class="FormContainerLeft row-cols-5">
 					<div class="form-group mb-3">
-
-						{{ form_label(form.date) }}
-						{{ form_widget(form.date, {'attr': {'class': 'form-control', 'value' : 'date'}}) }}
-						{{ form_errors(form.date) }}
+						{{ form_label(form.Firstname) }}
+						{{ form_widget(form.Firstname, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form.Firstname) }}
 					</div>
 					<div class="form-group mb-3">
-						{{ form_label(form.heure) }}
-						{{ form_widget(form.heure, {'attr': {'class': 'form-control', 'value' : 'heure'}}) }}
-						{{ form_errors(form.heure) }}
+						{{ form_label(form.Lastname) }}
+						{{ form_widget(form.Lastname, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form.Lastname) }}
 					</div>
-
+					<div class="form-group mb-3">
+						{{ form_label(form.phone_number) }}
+						{{ form_widget(form.phone_number, {'attr': {'class': 'form-control'}}) }}
+						{{ form_errors(form.phone_number) }}
+					</div>
 				</div>
-				<div class="groupCptFormPersoRight">
+				<div class="FormContainerRight row-cols-5">
 					<div class="form-group mb-3">
 						{{ form_label(form.guestsNumber) }}
 						{{ form_widget(form.guestsNumber, {'attr': {'class': 'form-control'}}) }}
@@ -57,16 +47,75 @@
 						{{ form_label(form.allergie) }}
 						{{ form_widget(form.allergie, {'attr': {'class': 'form-control','style': 'resize:none;'}}) }}
 					</div>
+					<div class="form-group mb-3"></div>
 				</div>
+				<h3 class="description">Vos dernières réservations</h3>
+				<table class="tableReservation">
+					<thead>
+						<tr>
+							<th>Date de réservation</th>
+							<th>Horaire</th>
+							<th>Nombre de couverts</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for userReservation in userReservation %}
+							<tr>
 
-				{{ form_end(form) }}
+								<td>
+									{{ userReservation.date|date('m/d/Y', 'Europe/Paris') }}
+								</td>
 
+								<td>{{ userReservation.heure|date('h:i', 'Europe/Paris') }}</td>
+								<td>{{ userReservation.guestsNumber }}</td>
+							</tr>
+							{# {{ dump(userReservation) }} #}
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 		</div>
-	</div>
-</main>
-<section>				<div class="form-group text-center">
-					<button type="submit" class="btn btn-primary px-4">Réserver</button>
+	</section>
+	<div class="">
+		<section class="sectionContainerRight">
+			<div class="mainSectionContainerRight">
+				<div class="titleContaineRight">
+					<h2 class="titleLeft">~ Réservez une table maintenant ~</h2>
 				</div>
-				<div id="availability-message"></div>
-				<div id="calendar"></div></div></div></div></div></section {% endblock %}
+				<div class="reservationFormContainer">
+					<div class="form-group mb-3">
+						{{ form_label(form.date) }}
+						{{ form_widget(form.date, {'attr': {'class': 'form-control', 'value' : 'date'}}) }}
+						{{ form_errors(form.date) }}
+					</div>
+					<div class="form-group mb-3">
+						{{ form_label(form.heure) }}
+						{{ form_widget(form.heure, {'attr': {'class': 'form-control', 'value' : 'heure'}}) }}
+						{{ form_errors(form.heure) }}
+					</div>
+				</div>
+				<div class="reservationFormContainer">
+					<div class="form-group mb-3">
+						<button type="submit" class="btn btn-primary px-4">Réserver</button>
+					</div>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</section>
+		<section class="sectionContainerAvailable">
+			<div class="mainSectionContainerAvailable">
+				<div class="titleContaineRight">
+					<h2 class="titleLeft">~ Vérifiez nos disponibilités ~</h2>
+				</div>
+				<p>Disponibilités pour le dîner</p>
+				<div class="availability-slots">
+					<div id="time-slots" class="mt-3"></div>
+				</div>
+				<p>Disponibilités pour le dîner</p>
+				<div class="availability-slots">
+					<div id="time-slots2" class="mt-3"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div></main>{% endblock %}

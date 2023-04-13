@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Restaurant;
 use App\Entity\Reservation;
 use App\Entity\Categories;
 use App\Entity\Dish;
@@ -58,6 +59,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::submenu("GESTION DU RESTAURANT", "fa fa-clock-o")->setSubItems([
             MenuItem::linkToCrud('Horaires', 'fa fa-clock-o', RestaurantSchedule::class),
             MenuItem::linkToCrud('Réservations', 'fa fa-check-square-o', Reservation::class),
+            MenuItem::linkToCrud('Nombre de places', 'fa fa-check-square-o', Restaurant::class),
         ]);
 
         yield MenuItem::subMenu('GESTION DE LA CARTE DU RESTAURANT', 'fa fa-cutlery')->setSubItems([

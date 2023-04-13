@@ -38,20 +38,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Reserved_by')]
-    private ?Reservation $Reservation = null;
-
     #[ORM\Column(nullable: true)]
     private ?int $guestsNumber = null;
 
     #[ORM\Column(length: 255)]
     private ?string $allergie = null;
 
-    private Collection $loggedReservationUser;
+    #[ORM\OneToMany(mappedBy: 'reservationUser', targetEntity: Reservation::class)]
+    private Collection $reservations;
 
     public function __construct()
     {
-        $this->loggedReservationUser = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,18 +144,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getReservation(): ?reservation
-    {
-        return $this->Reservation;
-    }
-
-    public function setReservation(?reservation $Reservation): self
-    {
-        $this->Reservation = $Reservation;
-
-        return $this;
-    }
-
     public function getGuestsNumber(): ?int
     {
         return $this->guestsNumber;
@@ -185,27 +171,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Reservation>
      */
-    public function getLoggedReservationUser(): Collection
+    public function getReservations(): Collection
     {
-        return $this->loggedReservationUser;
+        return $this->reservations;
     }
 
-    public function addLoggedReservationUser(Reservation $loggedReservationUser): self
+    public function addReservation(Reservation $reservation): self
     {
-        if (!$this->loggedReservationUser->contains($loggedReservationUser)) {
-            $this->loggedReservationUser->add($loggedReservationUser);
-            $loggedReservationUser->setReservationUser($this);
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations->add($reservation);
+            $reservation->setReservationUser($this);
         }
 
         return $this;
     }
 
-    public function removeLoggedReservationUser(Reservation $loggedReservationUser): self
+    public function removeReservation(Reservation $reservation): self
     {
-        if ($this->loggedReservationUser->removeElement($loggedReservationUser)) {
+        if ($this->reservations->removeElement($reservation)) {
             // set the owning side to null (unless already changed)
-            if ($loggedReservationUser->getReservationUser() === $this) {
-                $loggedReservationUser->setReservationUser(null);
+            if ($reservation->getReservationUser() === $this) {
+                $reservation->setReservationUser(null);
             }
         }
 

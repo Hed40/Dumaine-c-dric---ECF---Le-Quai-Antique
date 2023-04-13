@@ -15,15 +15,17 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class AccountController extends AbstractController
 {
-    public function __construct(TokenStorageInterface $tokenStorage) {
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
         $this->currentUser = $tokenStorage->getToken()->getUser();
-
     }
     #[Route('/account', name: 'app_account', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager, RestaurantScheduleRepository $restaurantScheduleRepository, ReservationRepository $reservationRepository): Response
     {
-        $restaurantSchedules = $restaurantScheduleRepository->findAll();
         // Récupére les horaires de restaurant
+        $restaurantSchedules = $restaurantScheduleRepository->findAll();
+        // Récupère les réservations de l'utilisateur
+        $userReservation =  $reservationRepository->findBy(['reservationUser' => $this->currentUser]);
         // Instanciation d'un nouvel objet Reservation
         $reservation = new Reservation();
         // Création d'un formulaire de type ReservationFormType
@@ -32,6 +34,7 @@ class AccountController extends AbstractController
         $form->get('Lastname')->setData($this->currentUser->getLastName());
         $form->get('guestsNumber')->setData($this->currentUser->getGuestsNumber());
         $form->get('allergie')->setData($this->currentUser->getAllergie());
+
         // si le formulaire a été soumis
         $form->handleRequest($request);
         // Vérification si le formulaire est valide et envoi des données dans la
@@ -47,6 +50,7 @@ class AccountController extends AbstractController
         return $this->render('account/index.html.twig', [
             'form' => $form->createView(),
             'restaurantSchedules' => $restaurantSchedules,
+            'userReservation' => $userReservation,
         ]);
     }
 }

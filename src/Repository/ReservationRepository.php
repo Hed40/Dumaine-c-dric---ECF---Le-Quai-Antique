@@ -39,20 +39,23 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Reservation[] Returns an array of Reservation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getTotalReservedSeatsForTimeSlot(string $date, string $heure): int
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->select('SUM(r.guestsNumber)')
+            ->where('r.date = :date')
+            ->andWhere('r.heure = :heure')
+            ->setParameters([
+                'date' => $date,
+                'heure' => $heure
+            ]);
+    
+        $totalReservedSeats = $queryBuilder->getQuery()->getSingleScalarResult();
+    
+        return $totalReservedSeats ? (int) $totalReservedSeats : 0;
+    }
+    
+    
 
 //    public function findOneBySomeField($value): ?Reservation
 //    {
@@ -63,4 +66,5 @@ class ReservationRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }

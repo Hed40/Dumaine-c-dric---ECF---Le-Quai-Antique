@@ -37,7 +37,7 @@ class Reservation
     #[ORM\Column(length: 255)]
     private ?string $Phone_number = null;
 
-    #[ORM\ManyToOne(inversedBy: 'loggedReservationUser')]
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
     private ?User $reservationUser = null;
 
 

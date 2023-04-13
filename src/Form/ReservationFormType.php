@@ -6,7 +6,6 @@ use App\Entity\Reservation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -39,7 +38,6 @@ class NotTheSunday extends Constraint
                 ->addViolation();
         }
     }
-    
 }
 
 class ReservationFormType extends AbstractType
@@ -69,11 +67,13 @@ class ReservationFormType extends AbstractType
             ]
         ])
         ->add('guestsNumber', IntegerType::class, [
-            'label' => 'Nombre de couverts par defaut',
+            'label' => 'Nombre de couverts',
             'attr' => [
                 'class' => 'form-control',
-                'placeholder' => '',
-                'min' => 0, //  empêcher les valeurs négatives
+                'placeholder' => 'Indiquez le nombre de couverts',
+                'min' => 1, //  empêcher les valeurs négatives
+                'max' => 12, //  empêcher les réservations au dessus de 12 personnes
+                'value' => 1, //  définir la valeur par défaut à 1
             ],
             'constraints' => [
                 new GreaterThanOrEqual([
@@ -82,26 +82,24 @@ class ReservationFormType extends AbstractType
                 ]),
             ],
         ])
-        
             ->add('date', DateType::class, [
                 'label' => 'Date de réservation',
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control',
-                    'id' =>'date',
                     'placeholder' => 'jj/mm/aaaa',
                 ],
                 'constraints' => [
                     new NotTheSunday(),
                 ],
+
+                'data' => new \DateTime('now'), //  définir la date par défaut sur la date d'aujourd'hui
             ])
             ->add('heure', ChoiceType::class, [
                 'label' => "Heure prévue d'arrivée",
                 'attr' => [
                     'class' => 'form-control',
-                    'id' =>'heure',
                 ],
-
                 'choices' => [
                     '12h00' => '12:00:00',
                     '12h15' => '12:15:00',
@@ -112,10 +110,29 @@ class ReservationFormType extends AbstractType
                     '13h30' => '13:30:00',
                     '13h45' => '13:45:00',
                     '14h00' => '14:00:00',
-                    '15h00' => '15:00:00',
+                    '18h00' => '18:00:00',
+                    '18h15' => '18:15:00',
+                    '18h30' => '18:30:00',
+                    '18h45' => '18:45:00',
+                    '19h00' => '19:00:00',
+                    '19h15' => '19:15:00',
+                    '19h30' => '19:30:00',
+                    '19h45' => '19:45:00',
+                    '20h00' => '20:00:00',
+                    '20h15' => '20:15:00',
+                    '20h30' => '20:30:00',
+                    '20h45' => '20:45:00',
+                    '21h00' => '21:00:00',
                 ],
+                'group_by' => function($value) {
+                    if ($value >= '12:00:00' && $value <= '14:00:00') {
+                        return 'Réserver pour le diner';
+                    } elseif ($value >= '18:00:00' && $value <= '21:00:00') {
+                        return 'Réserver pour le déjeuner';
+                    }
+                },
             ])
-            ->add('allergie', TextareaType::class, [
+            ->add('allergie', TextType::class, [
                 'label' => 'Allergies éventuelles',
                 'attr' => [
                     'class' => 'form-control',

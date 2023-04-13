@@ -5,7 +5,6 @@
 }
 
 main {
-
   min-height: 700px;
 }
 
@@ -34,12 +33,12 @@ h5 {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  min-height: 100vh;
 }
 
 .schudeleContainer,
 .registerContainer {
   background-color: rgba(255, 255, 255, 0.7);
-  margin-top: 40px;
 }
 
 .loginContainer {
@@ -210,83 +209,11 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
   background-color: rgba(255, 255, 255, 0.6);
   width: 45%;
-  height: 300px;
+  height: 50vh;
   border-radius: 4px;
-}
-
-
-/* Menu personnel*/
-
-.mainPersoCcontainer {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  background-color: black;
-  background-image: url("../img/snack.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.cptPerso{
-  display: flex;
-  justify-content: space-evenly
-
-}
-
-#cptPersoMenuLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  background-color: rgba(255, 255, 255, 0.6);
-  width: 45%;
-  height: 600px;
-  border-radius: 4px;
-  margin-top: 35px;
-}
-
-#cptPersoMenuRight {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  width: 45%;
-  height: 600px;
-  border-radius: 4px;
-  margin-top: 35px;
-  justify-content: flex-start;
-}
-
-.groupCptFormPersoLeft{
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  flex-direction: column
-
-
-}
-
-.groupCptFormPersoRight{
-  display: flex;
-  gap: 20px;
-  width: 100%;
-  flex-direction: column
-
-
-}
-
-.mainCptFormPerso{
-  display: flex;
-  align-items: flex-start;
-  width: 80%;
-  gap: 50px;
-
-}
-
-.cptTitle{
-  margin-top: 40px;
 }
 
 /*MENUS - CARTE*/
@@ -301,13 +228,13 @@ footer {
 }
 
 /* Page Menus */
-.menuCaps{
+.menuCaps {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.MenusCard{
+.MenusCard {
   border: 2px dashed rgba(255, 255, 255, 0.7);
   /*border-image: url("../img/Crayon.svg") 20 / 20px 100px / 1 round;*/
   border-radius: 8px;
@@ -578,7 +505,7 @@ aside {
   width: 100%;
 }
 
-.noEntry{
+.noEntry {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -616,3 +543,28 @@ aside {
     color: #fff;
   }
 }
+
+.availability-slots{
+display: flex;
+justify-content: flex-start
+}
+
+#time-slots{
+display: flex;
+justify-items: center;
+flex-wrap: wrap;
+gap: 6px;
+}
+
+#time-slots2{
+  display: flex;
+  justify-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  }
+
+./*hidden-hour {
+  display: none;
+}
+
+/*test*/

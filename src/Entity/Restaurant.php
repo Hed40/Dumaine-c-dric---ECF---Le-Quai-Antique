@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\RestaurantRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RestaurantRepository::class)]
@@ -19,9 +18,6 @@ class Restaurant
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\OneToMany(mappedBy: 'Restaurant', targetEntity: CutleryMax::class)]
-    private Collection $Cutlery_max;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
 
@@ -34,9 +30,11 @@ class Restaurant
     #[ORM\OneToMany(mappedBy: 'restaurant_id', targetEntity: RestaurantSchedule::class)]
     private Collection $restaurantSchedules;
 
+    #[ORM\Column]
+    private ?int $maxSeats = null;
+
     public function __construct()
     {
-        $this->Cutlery_max = new ArrayCollection();
         $this->restaurantSchedules = new ArrayCollection();
     }
 
@@ -53,43 +51,6 @@ class Restaurant
     public function setName(string $Name): self
     {
         $this->Name = $Name;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, CutleryMax>
-     */
-    public function getCutleryMax(): Collection
-    {
-        return $this->Cutlery_max;
-    }
-
-    public function addCutleryMax(CutleryMax $cutleryMax): self
-    {
-        if (!$this->Cutlery_max->contains($cutleryMax)) {
-            $this->Cutlery_max->add($cutleryMax);
-            $cutleryMax->setRestaurant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCutleryMax(CutleryMax $cutleryMax): self
-    {
-        if ($this->Cutlery_max->removeElement($cutleryMax)) {
-            // set the owning side to null (unless already changed)
-            if ($cutleryMax->getRestaurant() === $this) {
-                $cutleryMax->setRestaurant(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function setCutleryMax(?Cutlerymax $cutlery_max): self
-    {
-        $this->cutlery_max = $cutlery_max;
 
         return $this;
     }
@@ -156,6 +117,18 @@ class Restaurant
                 $restaurantSchedule->setRestaurantId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMaxSeats(): ?int
+    {
+        return $this->maxSeats;
+    }
+
+    public function setMaxSeats(int $maxSeats): self
+    {
+        $this->maxSeats = $maxSeats;
 
         return $this;
     }
