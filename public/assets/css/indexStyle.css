@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
 
+@media only screen and (min-width: 768px) {
 * {
   margin: 0;
 }
 
 main {
-  min-height: 700px;
+  min-height: auto;
 }
 
 nav {
-  background-image: url("../img/snack.jpg");
+  background-color: #000000;
 }
 
 h1,
@@ -17,28 +18,40 @@ h2,
 h3,
 h4,
 h5 {
+
   font-family: "Cardo", serif;
 }
 
-.logo_QA {
-  position: relative;
+.navbarLogo{
+  color: #fff;
+
+}
+
+.logoQAw {
+  display: flex;
+  width: 20vw;
+  height: 75vh;
 }
 
 .main_container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   background-color: black;
-  background-image: url("../img/snack.jpg");
+  background-image: url(../img/Hamb.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 50vh;
+  justify-content: center;
 }
 
+.availabilityRight,
 .schudeleContainer,
 .registerContainer {
+
   background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
 }
 
 .loginContainer {
@@ -172,9 +185,16 @@ footer {
   justify-content: center;
 }
 
+.social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo_social {
   display: flex;
   justify-content: center;
+  list-style: none;
 }
 
 .navbar-brand {
@@ -195,14 +215,15 @@ footer {
 .subtitleMainCard {
   display: flex;
   justify-content: center;
-  padding: 2%;
-  font-size: 4rem;
+  font-size: 2.5rem;
 }
 
 .headline {
   display: flex;
-  padding-bottom: 30px;
-  font-size: 3.5rem;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10px;
+  font-size: 3rem;
 }
 
 #titleMenu {
@@ -210,10 +231,10 @@ footer {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  width: 45%;
-  height: 50vh;
-  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 /*MENUS - CARTE*/
@@ -254,6 +275,8 @@ footer {
 .StarterTitle {
   display: flex;
   justify-content: center;
+  color: #ffbb00;
+
 }
 
 .mainMenu {
@@ -341,6 +364,7 @@ footer {
 
 .menuTitle {
   font-size: 2rem;
+  color: #ffbb00;
 }
 
 .nameMenu {
@@ -367,12 +391,15 @@ footer {
   padding-bottom: 0;
 }
 
+.nav-item{
+}
+
 /*change couleur background des boutons*/
 .navbar-nav .nav-link:hover,
 .navbar-nav .active,
 .dropdown-item:hover {
   background-color: #555;
-  color: #fff;
+  color: #ffbb00;
 }
 
 .navbar-toggler-icon,
@@ -382,12 +409,12 @@ footer {
 
 .navbar-nav .nav-link.active,
 .navbar-nav .show > .nav-link {
-  color: #fff;
+  color: #ffbb00;
 }
 
 .active {
-  background-color: #555;
-  color: #fff;
+  background-color: #ffbb00;
+  color: #555;
 }
 
 aside {
@@ -482,9 +509,27 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 180px;
-  height: 60px;
-  margin-top: 10px;
+  width: 240px;
+  height: 90px;
+  font-size: x-large;
+  margin-top: 30px;
+}
+
+.btn-primary {
+  --bs-btn-color: #ffbb00;;
+  --bs-btn-bg:  #555;
+  --bs-btn-border-color: #555;
+  --bs-btn-hover-color: #555;
+  --bs-btn-hover-bg: #ffbb00;
+  --bs-btn-hover-border-color: #555;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #ffbb00;
+  --bs-btn-active-bg: #555;
+  --bs-btn-active-border-color: #555;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #555;
+  --bs-btn-disabled-border-color: #555;
 }
 
 .groupTitleBtn {
@@ -513,58 +558,895 @@ aside {
   color: #fff;
 }
 
+.logginSection,
+.homeSection,
+.carteSection,
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+/* Reservation*/
+
+.availability-slots{
+  display: flex;
+  justify-content: space-between
+  }
+  
+  #time-slots{
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  }
+  
+  #time-slots2{
+    display: flex;
+    justify-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 9px;
+    }
+  
+  .logginSection,
+  .homeSection,
+  .carteSection,
+  .menuSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 45vw;
+  }
+  
+  .logoLeft,
+  .cardMiddle,
+  .availabilityRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .reservationAvailabilityCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  
+  .lunchAvailability,
+  .dinerAvailability,
+  .legendAndInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .legendGreen{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    gap: 5px;
+  }
+  
+  .legendGreenCub{
+    width: 15px;
+    height: 15px;
+    background-color: #198754;
+
+    opacity: 70%;
+  }
+
+  .legendRed{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    gap: 5px;
+  }
+  
+  .legendRedCub{
+    width: 15px;
+    height: 15px;
+    background-color: #dc3545;
+    opacity: 70%;
+  }
+
+  .info{
+
+    flex-direction: row;
+    justify-content: flex-start;
+    font-style: italic;
+  }
+  
+  .legendGreenText
+  .legendRedText{
+    font-size:x-small;
+    color: #000000;
+  }
+
+}
+
+/*--------------------------------------------------------------------------------------*/
 /*VERSION MOBILE*/
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 767px) {
+
+  * {
+    margin: 0;
+  }
+  
+  main {
+    min-height: auto;
+  }
+  
+  nav {
+    background-image: url("../img/snack.jpg");
+  }
+
+  .navbarLogo{
+    display: flex;
+    color: #fff;
+    
+  }
+  .navbar-nav {
+    --bs-nav-link-padding-x: 0;
+    --bs-nav-link-padding-y: 0.5rem;
+    --bs-nav-link-font-weight: ;
+    --bs-nav-link-color: var(--bs-navbar-color);
+    --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
+    --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    padding-top: 10px;
+    margin-bottom: 0;
+    list-style: none;
+  }
+
+
+  .main_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .groupTitleBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .starterCaps {
     display: flex;
     width: 100%;
   }
 
-  #titleMenu {
+  .subtitleMainCard,
+  .MainCardTitle {
     display: flex;
-    background-color: rgba(255, 255, 255, 0.6);
-    width: 100%;
-    height: 50%;
-    padding-left: 30px;
-    padding-top: 40px;
-    padding-bottom: 60px;
-    padding-right: 30px;
-    border-radius: 4px;
+    justify-content: center;
   }
 
   .headline {
     display: flex;
     padding-bottom: 30px;
   }
+
   /*change couleur background des boutons*/
   .navbar-nav .nav-link:hover,
   .navbar-nav .nav-link:active {
     background-color: #555;
     color: #fff;
   }
+
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+
+  font-family: "Cardo", serif;
 }
+
+.logoQAw {
+  display: none;
+  width: 20vw;
+  height: 75vh;
+}
+
+.main_container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-color: black;
+  background-image: url(../img/Hamb.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  justify-content: center;
+}
+
+.availabilityRight,
+.schudeleContainer,
+.registerContainer {
+
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+}
+
+.loginContainer {
+  background-color: rgba(255, 255, 255, 0.7);
+  margin-top: 30px;
+}
+
+.restaurantCardSection {
+  display: flex;
+  color: #ffffff;
+  background-color: #000000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../img/Bgardoise.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.reserve-button,
+.aside_button {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+td {
+  width: auto;
+}
+
+.timetablesLunch,
+.timetablesDiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2%;
+  width: 33%;
+}
+
+.timetables_list {
+  display: flex;
+  justify-content: space-between;
+}
+
+h5 {
+  display: flex;
+  justify-content: center;
+}
+
+.main_timetables {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.timetables_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px dashed;
+  border-radius: 10px;
+  width: 95%;
+  margin-bottom: 5%;
+}
+
+.timetables_title {
+  color: brown;
+  margin-top: 3%;
+}
+
+hr {
+  border: 1.5px dashed;
+  width: 100%;
+  align-self: center;
+}
+
+.timetables_lists_container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.timetables_list {
+  display: flex;
+  margin-bottom: 1%;
+}
+
+.day {
+  display: flex;
+  width: 33%;
+  color: brown;
+  font-weight: 500;
+}
+
+.newsletter_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body::-webkit-scrollbar {
+  width: 0em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+/*No scrollbar*/
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  bottom: 0;
+  margin-bottom: 0;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+}
+
+.social{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_social {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.navbar-brand {
+  display: flex;
+  width: 10em;
+}
+
+.card-title {
+  background-color: var(--bs-card-cap-bg);
+}
+
+.subtitleMainCard,
+.MainCardTitle {
+  display: flex;
+  justify-content: center;
+  width: 100vw
+}
+
+.subtitleMainCard {
+  display: flex;
+  justify-content: center;
+}
+
+.headline {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+#titleMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.4);
+  height: auto;
+  border-radius: 8px;
+  padding-left: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-right: 30px;
+}
+
+/*MENUS - CARTE*/
+
+.list-group-item {
+  background: transparent !important;
+  color: white;
+}
+.list-group {
+  background: transparent !important;
+  color: white;
+}
+
+/* Page Menus */
+.menuCaps {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.MenusCard {
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  /*border-image: url("../img/Crayon.svg") 20 / 20px 100px / 1 round;*/
+  border-radius: 8px;
+}
+
+.starterCaps {
+  display: flex;
+}
+
+.starterCard {
+  border: 2px dashed rgba(255, 255, 255, 0.7);
+  /*border-image: url("../img/Crayon.svg") 20 / 20px 100px / 1 round;*/
+  border-radius: 8px;
+}
+
+.StarterTitle {
+  display: flex;
+  justify-content: center;
+  color: #ffbb00;
+}
+
+.mainMenu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dishCaps,
+.starterCaps {
+  padding: 10px;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+.name,
+.arrow,
+.price,
+.desc .TTC {
+  display: flex;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+.desc {
+  font-size: 0.7rem;
+  font-style: italic;
+  padding-left: 35px !important;
+}
+
+.span {
+  display: flex;
+  justify-content: right;
+}
+
+.img {
+  width: 30px;
+  height: 30px;
+}
+
+.starterList {
+  margin-top: 1.5rem;
+  padding: 10px !important;
+}
+
+.card-header {
+  padding: 0 !important;
+}
+
+.comboNameDesc {
+  display: flex;
+}
+
+.TTC {
+  margin-left: 3px;
+  font-size: 0.5rem;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Title,
+.menuTitle,
+.nameMenu,
+.descMenu,
+.priceMenu {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+
+}
+
+.Title {
+  font-size: 2rem;
+}
+
+.menuTitle {
+  font-size: 2rem;
+  color: #ffbb00;
+}
+
+.nameMenu {
+  font-size: 1.5rem;
+}
+
+.descMenu {
+  font-size: 1.2rem;
+}
+
+.menuName {
+  font-size: 1rem;
+}
+
+.priceMenu {
+  font-size: 1.5rem;
+}
+
+.list-group-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  padding-bottom: 0;
+}
+
+/*change couleur background des boutons*/
+.navbar-nav .nav-link:hover,
+.navbar-nav .active,
+.dropdown-item:hover {
+  background-color: #555;
+  color: #ffbb00;
+}
+
+.navbar-toggler-icon,
+.navbar-light .nav-link {
+  color: #fff;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .nav-link {
+  color: #fff;
+}
+
+.active {
+  background-color: #555;
+  color: #ffbb00;
+}
+
+.navbar-toggler {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  line-height: 0.5;
+  color: #ffbb00;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--bs-navbar-toggler-border-radius);
+  transition: var(--bs-navbar-toggler-transition);
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  margin: 10px;
+  vertical-align: middle;
+  background-image: var(--bs-navbar-toggler-icon-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+aside {
+  background-color: transparent;
+  background-image: url("../img/Bgardoise.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.galeryContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.galeryCub {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: #000000 solid 1px;
+  border-radius: 8px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.galeryImg {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover;
+  scale: 1.15;
+  transition: opacity 0.25s, scale 0.35s;
+}
+
+.galeryBody {
+  position: absolute;
+  inset: 0;
+  padding: 50px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+  justify-content: center;
+}
+
+.galeryBody::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 2px solid #fff;
+  opacity: 0;
+  scale: 1.25;
+  transition: opacity 0.25s, scale 0.25s;
+}
+
+.galeryCub:hover .galeryImg {
+  opacity: 0.5;
+  scale: 1;
+}
+
+.galeryCub:hover .galeryCardtitle {
+  display: flex;
+  opacity: 1;
+  scale: 1;
+}
+
+.galeryCardtitle {
+  display: none;
+  font-size: 2rem;
+}
+
+.galeryTitleContainer {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #555;
+  height: 100px;
+}
+
+.galeryTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+}
+
+.scheduleButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+  height: 90px;
+  font-size: x-large;
+  margin-top: 30px;
+}
+
+.btn-primary {
+  --bs-btn-color: #ffbb00;;
+  --bs-btn-bg:  #555;
+  --bs-btn-border-color: #555;
+  --bs-btn-hover-color: #555;
+  --bs-btn-hover-bg: #ffbb00;
+  --bs-btn-hover-border-color: #ffc400e7;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #ffbb00;
+  --bs-btn-active-bg: #555;
+  --bs-btn-active-border-color: #ffbb00;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #555;
+  --bs-btn-disabled-border-color: #555;
+}
+
+.groupTitleBtn {
+  width: 100%;
+}
+
+.groupPerso {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  width: 100%;
+}
+
+.noEntry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.logginSection,
+.homeSection,
+.carteSection,
+.menuSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/* Reservation*/
 
 .availability-slots{
-display: flex;
-justify-content: flex-start
-}
-
-#time-slots{
-display: flex;
-justify-items: center;
-flex-wrap: wrap;
-gap: 6px;
-}
-
-#time-slots2{
+  display: flex;
+  justify-content: space-between
+  }
+  
+  #time-slots{
   display: flex;
   justify-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 6px;
   }
+  
+  #time-slots2{
+    display: flex;
+    justify-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 9px;
+    }
+  
+  .logginSection,
+  .homeSection,
+  .carteSection,
+  .menuSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95vw;
+  }
+  
+  .logoLeft,
+  .cardMiddle,
+  .availabilityRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .reservationAvailabilityCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-./*hidden-hour {
-  display: none;
+  
+  .lunchAvailability,
+  .dinerAvailability,
+  .legendAndInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .legendGreen{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    gap: 5px;
+  }
+  
+  .legendGreenCub{
+    width: 15px;
+    height: 15px;
+    background-color: #198754;
+
+    opacity: 70%;
+  }
+
+  .legendRed{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    gap: 5px;
+  }
+  
+  .legendRedCub{
+    width: 15px;
+    height: 15px;
+    background-color: #dc3545;
+    opacity: 70%;
+  }
+
+  .info{
+
+    flex-direction: row;
+    justify-content: flex-start;
+    font-style: italic;
+  }
+  
+  .legendGreenText
+  .legendRedText{
+    font-size:x-small;
+    color: #000000;
+  }
 }
 
-/*test*/
+/*Pour les smartphones :
+
+Largeur d'écran inférieure à 768 pixels : @media screen and (max-width: 767px)
+Largeur d'écran comprise entre 768 et 991 pixels : @media screen and (min-width: 768px) and (max-width: 991px)
+Largeur d'écran supérieure à 992 pixels : @media screen and (min-width: 992px)
+Pour les tablettes :
+
+Largeur d'écran comprise entre 768 et 991 pixels : @media screen and (min-width: 768px) and (max-width: 991px)
+Largeur d'écran supérieure à 992 pixels : @media screen and (min-width: 992px)
+Il est important de noter que ces dimensions peuvent varier en fonction du design de votre site web et de la manière dont vous souhaitez que celui-ci soit affiché sur les différents appareils.

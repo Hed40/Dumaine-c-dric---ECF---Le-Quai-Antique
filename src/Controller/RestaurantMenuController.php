@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DessertsRepository;
 use App\Repository\DishRepository;
 use App\Repository\DrinksRepository;
 use App\Repository\StarterRepository;
@@ -11,23 +12,28 @@ use App\Repository\SetMenuRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class RestaurantMenuController extends AbstractController
 {
     #[Route('/restaurant/menu', name: 'app_restaurant_menu')]
     public function index(RestaurantScheduleRepository $restaurantScheduleRepository, 
-    StarterRepository $StarterRepository, SetMenuRepository $SetMenuRepository, DishRepository $SetDishRepository): Response
+    StarterRepository $StarterRepository, SetMenuRepository $SetMenuRepository, DishRepository $SetDishRepository, DessertsRepository $SetDessertsRepository, DrinksRepository $SetDrinksRepository): Response
     {
         // Récupérez les horaires des restaurants ici
         $restaurantSchedules = $restaurantScheduleRepository->findAll();
         $starters = $StarterRepository->findAll();
         $setMenu = $SetMenuRepository->findAll();
         $dish = $SetDishRepository->findAll();
+        $dessert = $SetDessertsRepository->findAll();
+        $drink = $SetDrinksRepository->findAll();
 
         return $this->render('restaurant_menu/index.html.twig', [
             'restaurantSchedules' => $restaurantSchedules,
             'starters' => $starters,
             'setMenu' => $setMenu,
             'dish' => $dish,
+            'dessert' => $dessert,
+            'drink' => $drink,
         ]);
     }
 }

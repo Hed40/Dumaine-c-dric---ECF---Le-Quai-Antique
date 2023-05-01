@@ -24,10 +24,10 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Dish::class)] 
     private Collection $dishes;
 
-    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Drinks::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Drinks::class)]
     private Collection $drinks;
 
-    #[ORM\OneToMany(mappedBy: 'type', targetEntity: Desserts::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Desserts::class)]
     private Collection $desserts;
 
     public function __construct()
@@ -124,7 +124,7 @@ class Categories
     {
         if (!$this->drinks->contains($drink)) {
             $this->drinks->add($drink);
-            $drink->setType($this);
+            $drink->setCategorie($this);
         }
 
         return $this;
@@ -134,8 +134,8 @@ class Categories
     {
         if ($this->drinks->removeElement($drink)) {
             // set the owning side to null (unless already changed)
-            if ($drink->getType() === $this) {
-                $drink->setType(null);
+            if ($drink->getCategorie() === $this) {
+                $drink->setCategorie(null);
             }
         }
 
@@ -154,7 +154,7 @@ class Categories
     {
         if (!$this->desserts->contains($dessert)) {
             $this->desserts->add($dessert);
-            $dessert->setType($this);
+            $dessert->setCategorie($this);
         }
 
         return $this;
@@ -164,8 +164,8 @@ class Categories
     {
         if ($this->desserts->removeElement($dessert)) {
             // set the owning side to null (unless already changed)
-            if ($dessert->getType() === $this) {
-                $dessert->setType(null);
+            if ($dessert->getCategorie() === $this) {
+                $dessert->setCategorie(null);
             }
         }
 

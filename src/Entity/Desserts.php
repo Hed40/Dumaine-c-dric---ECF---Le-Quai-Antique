@@ -20,7 +20,7 @@ class Desserts
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'desserts')]
-    private ?Categories $type = null;
+    private ?Categories $categorie = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
@@ -56,14 +56,14 @@ class Desserts
         return $this;
     }
 
-    public function getType(): ?Categories
+    public function getCategorie(): ?Categories
     {
-        return $this->type;
+        return $this->categorie;
     }
 
-    public function setType(?Categories $type): self
+    public function setCategorie(?Categories $categorie): self
     {
-        $this->type = $type;
+        $this->categorie = $categorie;
 
         return $this;
     }

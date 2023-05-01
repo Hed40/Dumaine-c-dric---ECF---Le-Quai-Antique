@@ -24,7 +24,7 @@ class Drinks
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'drinks')]
-    private ?Categories $type = null;
+    private ?Categories $categorie = null;
 
     #[ORM\Column(length: 255)]
     private ?string $alcool_content = null;
@@ -73,14 +73,14 @@ class Drinks
         return $this;
     }
 
-    public function getType(): ?Categories
+    public function getCategorie(): ?Categories
     {
-        return $this->type;
+        return $this->categorie;
     }
 
-    public function setType(?Categories $type): self
+    public function setType(?Categories $categorie): self
     {
-        $this->type = $type;
+        $this->categorie = $categorie;
 
         return $this;
     }

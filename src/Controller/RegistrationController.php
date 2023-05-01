@@ -40,12 +40,14 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
+            $userAuthenticator->authenticateUser(
+            $user,
+            $authenticator,
+            $request
+              
             );
+
+            return  $this->redirectToRoute('registration_success');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -54,23 +56,13 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+    #[Route('/registration/success', name: 'registration_success')]
+    public function success(RestaurantScheduleRepository $restaurantScheduleRepository): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        //validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
-            return $this->redirectToRoute('app_register');
-        }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
-
-        return $this->redirectToRoute('app_register');
+        $restaurantSchedules = $restaurantScheduleRepository->findAll();
+        // Affichage de la page de succès de la registration
+        return $this->render('registration/success.html.twig', [
+            'restaurantSchedules' => $restaurantSchedules
+        ]);
     }
 }

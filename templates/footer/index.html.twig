@@ -1,71 +1,112 @@
 {% block footer %}
-	<footer class="container-fluid">
-		<div class="py-3">
-			<div class="main_timetables row">
-				<div class="timetables_container col-sm-6 col-lg-4">
-					<h5 class="timetables_title">Nos horaires d'ouvertures</h5>
-					<hr>
-					<table class="timetables_lists_container">
-						<tr class="timetables_list">
-							<th class="day"></th>
-							<th class="timetablesLunch">Déjeuner</th>
-							<th class="timetablesDiner">Dîner</th>
-						</tr>
-						<tr class="timetables_list">
-							<td class="day">Lundi</td>
-							<td class="timetablesLunch">Restaurant fermé</td>
-							<td class="timetablesDiner">Restaurant fermé</td>
-						</tr>
-						{% for restaurant_schedule in restaurantSchedules %}
-							<tr class="timetables_list">
-								<td class="day">{{ restaurant_schedule.weekDay }}</td>
-								<td class="timetablesLunch">
-									{{ restaurant_schedule.lunchOpeningTime|date('H:i')}}
-									à
-									{{ restaurant_schedule.lunchClosureTime|date('H:i')}}
-								</td>
-								<td class="timetablesDiner">
-									{{ restaurant_schedule.eveningOpeningTime|date('H:i')}}
-									à
-									{{ restaurant_schedule.eveningClosureTime|date('H:i')}}
-								</td>
-							</tr>
-						{% endfor %}
-						<tr class="timetables_list">
-							<td class="day">Dimanche</td>
-							<td class="timetablesLunch">Restaurant Fermé</td>
-							<td class="timetablesDiner">Restaurant fermé</td>
-						</tr>
-					</table>
-				</div>
-				<div class="newsletter_container col-md-5 mb-3">
-					<form>
-						<h5>Abonnez-vous à notre newsletter</h5>
-						<p class="d-flex flex-column flex-sm-row w-100 gap-2">Résumé mensuel de ce qui est nouveau et excitant de notre part.</p>
-						<div class="d-flex flex-column flex-sm-row w-100 gap-2">
-							<label for="newsletter1" class="visually-hidden">Adresse courriel</label>
-							<input id="newsletter1" type="text" class="form-control" placeholder="Adresse courriel">
-							<button class="btn btn-primary" type="button">S’inscrire</button>
-						</div>
-					</form>
-				</div>
-				<div class="copyright flex-sm-row py-4 my-4 border-top">
-					<p>© 2022 Le Quai Antique Tous droits réservés.</p>
-				</div>
-				<div class="logo_social">
-					<ul class="list-unstyled d-flex">
-						<li class="ms-3">
-							<img class="link-dark" src="{{ asset('assets/img/reseaux/facebook.png') }}" width="40" height="40">
-						</li>
-					</img>
-				</li>
-				<li class="ms-3">
-					<img class="link-dark" src="{{ asset('assets/img/reseaux/instagram.png') }}" width="40" height="40">
-				</li>
-			</img>
-		</li>
-		<li class="ms-3">
-			<img class="link-dark" src="{{ asset('assets/img/reseaux/twitter.png') }}" width="40" height="40">
-		</li>
-	</img>
-</li></ul></div></div></div></footer>{% endblock %}
+  <footer class="container-fluid">
+    <div class="py-3">
+      <div class="main_timetables row">
+        <div class="timetables_container col-sm-6 col-lg-4">
+          <h5 class="timetables_title">
+            Nos horaires d'ouvertures
+          </h5>
+          <hr />
+          <table class="timetables_lists_container">
+            <tr class="timetables_list">
+              <th class="day"></th>
+              <th class="timetablesLunch">
+                Déjeuner
+              </th>
+              <th class="timetablesDiner">
+                Dîner
+              </th>
+            </tr>
+            {% for restaurant_schedule in restaurantSchedules %}
+              <tr class="timetables_list">
+                <td class="day">
+                  {{ restaurant_schedule.weekDay }}
+                </td>
+                <td class="timetablesLunch">
+                  {{ restaurant_schedule.lunchOpeningTime|date('H:i') }}
+                  à
+                  {{ restaurant_schedule.lunchClosureTime|date('H:i') }}
+                </td>
+                <td class="timetablesDiner">
+                  {{ restaurant_schedule.eveningOpeningTime|date('H:i') }}
+                  à
+                  {{ restaurant_schedule.eveningClosureTime|date('H:i') }}
+                </td>
+              </tr>
+            {% endfor %}
+            <tr class="timetables_list">
+              <td class="day">
+                Dimanche & jours fériés
+              </td>
+              <td class="timetablesLunch">
+                Restaurant Fermé
+              </td>
+              <td class="timetablesDiner">
+                Restaurant fermé
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="newsletter_container col-md-5 mb-3">
+          <form>
+            <h5>
+              <b>Abonnez-vous à notre newsletter</b>
+            </h5>
+            <p class="d-flex flex-column flex-sm-row w-100 gap-2">
+              Pour suivre les nouveautés culinaires 2023 de notre chef MICHANT.
+            </p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+              <label for="newsletter1" class="visually-hidden">
+                Adresse courriel
+              </label>
+              <input id="newsletter1"
+                type="text"
+                class="form-control"
+                placeholder="Adresse courriel" />
+              <button class="btn btn-primary" type="button">S’inscrire</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="social">
+          <p><b>
+            Suivez nous aussi sur les réseaux sociaux</b>
+          </p>
+          <ul class="logo_social">
+            <li class="">
+              <a href="https://fr-fr.facebook.com/" target="_blank">
+                <img src="{{ asset('assets/img/reseaux/facebook.png') }}"
+                  width="40"
+                  height="40"
+                  alt="Lien vers la page Facebook" />
+              </a>
+            </li>
+            <li class="ms-3">
+              <a href="https://www.instagram.com/" target="_blank">
+                <img class="link-dark"
+                  src="{{ asset('assets/img/reseaux/instagram.png') }}"
+                  width="40"
+                  height="40"
+                  alt="Lien vers la page Instagram" />
+              </a>
+            </li>
+            <li class="ms-3">
+              <a href="https://twitter.com/login/" target="_blank">
+                <img class="link-dark"
+                  src="{{ asset('assets/img/reseaux/twitter.png') }}"
+                  width="40"
+                  height="40"
+                  alt="Lien vers la page Twitter" />
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright flex-sm-row py-4 my-4 border-top">
+          <p>
+            © 2023 Le Quai Antique Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock %}

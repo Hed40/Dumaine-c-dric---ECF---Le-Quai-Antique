@@ -22,7 +22,7 @@ class DrinksCrudController extends AbstractCrudController
         return [
         TextField::new('brand', 'Marque'),
         // Champ de texte enrichi pour la description de la boisson
-        AssociationField::new('type', 'Catégorie')
+        AssociationField::new('categorie', 'Catégorie')
             // Champ d'association pour la catégorie
             ->setRequired(true)
             // La catégorie est obligatoire
@@ -38,7 +38,7 @@ class DrinksCrudController extends AbstractCrudController
             ->setFormTypeOption('choice_label', 'name')
             //L'ajout de la méthode formatValue permet de récupérer le nom de la catégorie sélectionnée au lieu de son ID.
             ->formatValue(function ($value, $entity) {
-                return $entity->gettype()->getName();
+                return $entity->getCategorie()->getName();
             }),
             TextField::new('volume', "Contenance"),
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
 
 /*VERSION MOBILE*/
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 767px) {
   .mainPersoCcontainer {
     display: flex;
     flex-wrap: wrap;
@@ -13,9 +13,9 @@
     background-size: cover;
     min-height: 100vh;
   }
-  
+
   /*Bloc left*/
-  
+
   .sectionContainerLeft {
     display: flex;
     flex-direction: column;
@@ -25,73 +25,72 @@
     border-radius: 4px;
     padding-right: 30px;
     padding-top: 30px;
-    padding-left:30px;
+    padding-left: 30px;
     padding-bottom: 30px;
   }
-  
+
   .mainSectionContainerLeft {
     display: flex;
     flex-direction: column;
   }
-  
+
   .titleContainerLeft {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .titleLeft {
     display: flex;
   }
-  
+
   .description {
     display: flex;
   }
-  
+
   .FormContainerLeft {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-
     justify-content: space-evenly;
   }
-  
+
   .FormContainerRight {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  
+
   .row-cols-5 > * {
     flex: 0 0 auto;
     width: 100%;
   }
-  
+
   .tableReservation {
     margin: auto;
     width: 100%;
     border-collapse: collapse;
     border-radius: 4px;
   }
-  
+
   .tableReservation th,
   .tableReservation td {
     border: 1px solid #ddd;
     padding: 4px;
   }
-  
+
   .tableReservation th {
     text-align: left;
     background-color: #f2f2f2;
   }
-  
+
   .tableReservation tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  
+
   /*Bloc right*/
-  
+
   .sectionContainerRight {
     display: flex;
     flex-direction: column;
@@ -100,26 +99,26 @@
     width: 100%;
     height: 30%;
     border-radius: 4px;
-    margin-top: 35px;;
+    margin-top: 35px;
     padding-right: 30px;
     padding-top: 30px;
-    padding-left:30px;
+    padding-left: 30px;
     padding-bottom: 30px;
   }
 
-  .sectionContainerAvailable{
+  .sectionContainerAvailable {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 4px;
-    margin-top: 35px;;
+    margin-top: 35px;
     padding-right: 30px;
     padding-top: 30px;
-    padding-left:30px;
+    padding-left: 30px;
     padding-bottom: 30px;
   }
-  
+
   .mainSectionContainerRight {
     display: flex;
     flex-direction: column;
@@ -131,27 +130,24 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
   .titleContaineRight {
   }
-  
+
   .reservationFormContainer {
     display: flex;
     margin-top: 5px;
     justify-content: space-between;
     width: 100%;
   }
-  
+
   .availableFormContainer {
   }
-  
-  
-  
+
   /*----------------------*/
-  
 }
 /*Stylepageperso*/
-@media only screen and (min-width: 851px){
+@media only screen and (min-width: 768px) {
   .mainPersoCcontainer {
     display: flex;
     flex-wrap: wrap;
@@ -164,9 +160,9 @@
     padding: 5;
     min-height: 100vh;
   }
-  
+
   /*Bloc left*/
-  
+
   .sectionContainerLeft {
     display: flex;
     flex-direction: column;
@@ -174,7 +170,7 @@
     justify-content: flex-start;
     background-color: rgba(255, 255, 255, 0.6);
     width: 40vw;
-    height: 80%;
+    height: 80vh;
     margin-top: 35px;
     border-radius: 4px;
     padding-left: 50px;
@@ -183,64 +179,64 @@
     padding-left: 50px;
     padding-bottom: 30px;
   }
-  
+
   .mainSectionContainerLeft {
     display: flex;
     flex-direction: column;
   }
-  
+
   .titleContainerLeft {
     display: flex;
     flex-direction: column;
   }
-  
+
   .titleLeft {
     display: flex;
   }
-  
+
   .description {
     display: flex;
   }
-  
+
   .FormContainerLeft {
     display: flex;
     justify-content: space-evenly;
   }
-  
+
   .FormContainerRight {
     display: flex;
     justify-content: space-evenly;
   }
-  
+
   .row-cols-5 > * {
     flex: 0 0 auto;
     width: 30%;
   }
-  
+
   .tableReservation {
     margin: auto;
     width: 100%;
     border-collapse: collapse;
     border-radius: 4px;
   }
-  
+
   .tableReservation th,
   .tableReservation td {
     border: 1px solid #ddd;
     padding: 4px;
   }
-  
+
   .tableReservation th {
     text-align: left;
     background-color: #f2f2f2;
   }
-  
+
   .tableReservation tr:nth-child(even) {
     background-color: #f2f2f2;
   }
-  
+
   /*Bloc right*/
-  
+
   .sectionContainerRight {
     display: flex;
     flex-direction: column;
@@ -248,14 +244,13 @@
     justify-content: flex-start;
     background-color: rgba(255, 255, 255, 0.6);
     width: 40vw;
-    height: 25%;
+    height: 80vh;
     border-radius: 4px;
     margin-top: 35px;
     padding-right: 50px;
     padding-top: 30px;
     padding-left: 50px;
     padding-bottom: 30px;
-  
   }
 
   .sectionContainerAvailable {
@@ -265,34 +260,27 @@
     background-color: rgba(255, 255, 255, 0.6);
     width: 40vw;
     border-radius: 4px;
-    margin-top: 35px;;
+    margin-top: 35px;
     padding-right: 30px;
     padding-top: 30px;
-    padding-left:30px;
+    padding-left: 30px;
     padding-bottom: 30px;
   }
-  
-  .mainSectionContainerRight {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .titleContaineRight {
-  }
-  
+
   .reservationFormContainer {
     display: flex;
     margin-top: 5px;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
   }
-  
-  .availableFormContainer {
+
+  .reservationAvailabilityAccountCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
-  
-  
-  
+
   /*----------------------*/
-  
 }
+

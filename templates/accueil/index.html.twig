@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quai Antique - Notre catre
+{% block title %}Quai Antique - Bienvenue
 {% endblock %}
 {% block content %}
 	<main class="main_container container-fluid">
-		<div class="container-fluid">
+		<div class="logoQAw">
+	<img src="{{ asset('assets/img/logoQAw.png') }}" alt="" class="logoQAw">
+	</div>
+		<div class="homeSection">
 			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
 				<div class="groupTitleBtn">
-					<h1 class="headline" style="text-align: left;">Bienvenue au Quai Antique !</h1>
+					<h1 class="headline"><b>Bienvenue</b></h1>
+					<h2 class="headline"><b>Le Quai Antique</b> et notre chef vous accueil !</h2>
 					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
-						<span>Réservez une table</span>
+						<span>Réservez une table <b>Maintenant</b></span>
 					</a>
 				</div>
 			</div>
@@ -19,9 +23,9 @@
 		<div class="card bg-transparent">
 			<div class="card-body">
 				<div class="card-header">
-					<h1 class="MainCardTitle">LE QUAI ANTIQUE</h1>
+					<h2 class="MainCardTitle">LE QUAI ANTIQUE</h2>
 					<hr>
-					<h2 class="subtitleMainCard">~ NOS PLATS LES PLUS APPRÉCIÉS ~</h2>
+					<h3 class="subtitleMainCard">~ NOS PLATS LES PLUS APPRÉCIÉS ~</h3>
 					<hr>
 					<div class="card-body mainMenu">
 					<div class="card bg-transparent starterCaps">
@@ -30,7 +34,7 @@
 						{% else %}
 							{% for image in images %}
 								<figure class="galeryCub col-md-2">
-									<img class="galeryImg" src="/uploads/images/gallery/{{image.illustration}}"/>
+									<img class="galeryImg" src="/uploads/images/gallery/{{image.illustration}}" alt="{{image.titre}}"/>
 									<figcaption class="galeryBody">
 										<h3 class="galeryCardtitle">{{image.titre}}</h3>
 										<p class="card-text"></p>

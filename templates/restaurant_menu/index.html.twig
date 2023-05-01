@@ -4,10 +4,16 @@
 {% endblock %}
 {% block content %}
 	<main class="main_container container-fluid">
-		<div class="container-fluid">
+		<div class="logoQAw">
+			<img src="{{ asset('assets/img/logoQAw.png') }}" alt="" class="logoQAw">
+		</div>
+		<div class="carteSection">
 			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
 				<div class="groupTitleBtn">
-					<h1 class="headline" style="text-align: left;">Le Quai Antique à la carte !</h1>
+					<h1 class="headline" style="text-align: left;">
+						<b>~ Le Quai Antique ~</b>
+					</h1>
+					<h2 class="headline">À la carte !</h2>
 					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
 						<span>Réservez une table</span>
 					</a>
@@ -19,7 +25,7 @@
 		<div class="card bg-transparent">
 			<div class="card-body">
 				<div class="card-header">
-					<h1 class="MainCardTitle">LE QUAI ANTIQUE À LA CARTE</h1>
+					<h2 class="MainCardTitle">~ LE QUAI ANTIQUE ~ À LA CARTE</h2>
 					<hr>
 					<h2 class="subtitleMainCard">~ À TABLE ! ~</h2>
 					<hr>
@@ -87,26 +93,55 @@
 						<div class="card bg-transparent starterCaps">
 							<div class="card-body starterCard">
 								<div class="card-header">
-									<h3 class="StarterTitle">NOS FORMULES</h3>
+									<h3 class="StarterTitle">NOS DESSERTS</h3>
 									<div class="card-body starterList">
 										{% if setMenu is empty %}
-											<p class="noEntry">Aucune entrée n'a été trouvée.</p>
+											<p class="noEntry">Aucun dessert n'a été trouvée.</p>
 										{% else %}
 											<div class="">
-												{% for setMenu in setMenu %}
+												{% for dessert in dessert %}
 													<div class="list-group-item">
 														<div class="name">~
-															{{ setMenu.name }}</div>
+															{{ dessert.name }}</div>
 														<div class="arrow">
 															<span></span>
 														</div>
 														<div class="price">
-															{{ setMenu.price }}
+															{{ dessert.price }}
 															€
 															<div class="TTC">TTC</div>
 														</div>
 													</div>
-													<div class="desc">{{ setMenu.starter.title }} + {{ setMenu.Dish.title}} + {{ setMenu.Dessert.name}}</div>
+													<div class="desc">{{ dessert.description }}</div>
+												{% endfor %}
+											</div>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card bg-transparent starterCaps">
+							<div class="card-body starterCard">
+								<div class="card-header">
+									<h3 class="StarterTitle">NOS BOISSONS</h3>
+									<div class="card-body starterList">
+										{% if setMenu is empty %}
+											<p class="noEntry">Aucune boisson n'a été trouvée.</p>
+										{% else %}
+											<div class="">
+												{% for drink in drink %}
+													<div class="list-group-item">
+														<div class="name">~
+															{{ drink.brand }}</div>
+														<div class="arrow">
+															<span></span>
+														</div>
+														<div class="price">
+															{{ drink.price }}
+															€
+															<div class="TTC">TTC</div>
+														</div>
+													</div>
 												{% endfor %}
 											</div>
 										{% endif %}
@@ -119,5 +154,4 @@
 			</div>
 		</div>
 	</section>
-
 {% endblock %}

@@ -22,62 +22,67 @@ class RegistrationFormType extends AbstractType
     {
         $builder
 
-        ->add('firstname', TextType::class, [
-            'label' => 'Votre prénom',
-            'constraints'=> new Length([
-                'min'=> 2,
-                'max'=> 30
-        ]), //Longueur de 2 min à 30 caractères Max
-            'attr' => [
-                'placeholder' => 'Veuillez saisir votre prénom'
-            ]
-        ])
-        
-        ->add('lastname', TextType::class, [
-            'label' => 'Votre nom',
-            'constraints'=> new Length([
-                'min'=> 2,
-                'max'=> 30
-        ]), //Longueur de 2 min à 30 caractères Max
-            'attr' => [
-                'placeholder' => 'Veuillez saisir votre nom'
-            ]
-        ])
-            ->add('email', EmailType::class,)
+            ->add('firstname', TextType::class, [
+                'label' => 'Votre prénom',
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]), //Longueur de 2 min à 30 caractères Max
+                'attr' => [
+                    'placeholder' => 'Veuillez saisir votre prénom'
+                ]
+            ])
+
+            ->add('lastname', TextType::class, [
+                'label' => 'Votre nom',
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ]), //Longueur de 2 min à 30 caractères Max
+                'attr' => [
+                    'placeholder' => 'Veuillez saisir votre nom'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Adresse email',
+                'attr' => [
+                    'placeholder' => 'Veuillez saisir votre adresse email'
+                ]
+            ])
 
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passes ne sont pas identique.',
                 'label' => 'Votre mot de passe',
                 'required' => true,
-                'constraints'=> new Length([
-                    'min'=> 2,
-                    'max'=> 50
-            ]), //Longueur de 2 min à 50 caractères Max
-                'first_options'=> [
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 50
+                ]), //Longueur de 2 min à 50 caractères Max
+                'first_options' => [
                     'label' => 'Mot de passe',
-                    'attr'=> [
+                    'attr' => [
                         'placeholder' => 'Veuillez de saisir votre mot de passe'
                     ]
                 ],
-                'second_options'=>[
-                    'label'=> 'Confirmer votre mot de passe',
-                    'attr'=> [
+                'second_options' => [
+                    'label' => 'Confirmer votre mot de passe',
+                    'attr' => [
                         'placeholder' => 'Veuillez de confirmer votre mot de passe'
                     ]
-                    ]
+                ]
             ])
 
             ->add('guestsNumber', IntegerType::class, [
                 'label' => 'Nombre de couverts par defaut',
                 'attr' => [
-                    'placeholder' => '',
+                    'placeholder' => 'Nombre de couverts par defaut',
                     'min' => 0, //  empêcher les valeurs négatives
                 ],
                 'constraints' => [
                     new GreaterThanOrEqual([
                         'value' => 1,
-                        'message' => 'Le nombre de convives ne peut pas être inférieur à 1.'
+                        'message' => 'Le nombre de convives ne peut pas être inférieur à 1.',
                     ])
                 ]
             ])
@@ -85,20 +90,9 @@ class RegistrationFormType extends AbstractType
             ->add('allergie', TextType::class, [
                 'label' => 'Des allergies eventuelles ?',
                 'attr' => [
-                    'placeholder' => ''
+                    'placeholder' => 'Exemple : Lactoze, Gluten, etc...',
                 ]
-            ])
-
-                        ->add('agreeTerms', CheckboxType::class, [
-                            'label' => 'Vous acceptez les termes et conditions d\'utilisation de notre site.',
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'Vous devez confirmer les termes.',
-                    ]),
-                ],
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

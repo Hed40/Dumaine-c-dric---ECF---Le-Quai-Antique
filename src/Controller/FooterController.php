@@ -17,4 +17,5 @@ class FooterController extends AbstractController
             'restaurantSchedules' => $restaurantSchedules,
         ]);
     }
+
 }

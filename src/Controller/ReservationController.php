@@ -12,9 +12,15 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ReservationController extends AbstractController
 {
+    public function __construct(TokenStorageInterface $tokenStorage)
+    {
+        $this->tokenStorage = $tokenStorage;
+    }
+
     #[Route('/reservation', name: 'app_reservation')]
     public function index(Request $request, EntityManagerInterface $entityManager, RestaurantScheduleRepository $restaurantScheduleRepository): Response
     {
@@ -24,6 +30,28 @@ class ReservationController extends AbstractController
         $reservation = new Reservation();
         // Création d'un formulaire de type ReservationFormType
         $form = $this->createForm(ReservationFormType::class, $reservation);
+
+        // Vérifier si l'utilisateur est authentifié avant d'accéder à ses informations
+        // Initialise la variable $currentUser à null
+        $currentUser = null;
+
+        // Récupère le jeton d'authentification courant depuis le TokenStorageInterface
+        $token = $this->tokenStorage->getToken();
+
+        // Vérifie si le jeton est défini et différent de null
+        if ($token !== null) {
+            // Si oui, récupère l'utilisateur courant depuis le jeton
+            $currentUser = $token->getUser();
+        }
+
+        // Vérifie si l'utilisateur courant est défini et différent de null
+        if ($currentUser !== null) {
+            // Si oui, pré-remplit les champs du formulaire avec les informations de l'utilisateur
+            $form->get('Firstname')->setData($currentUser->getFirstName());
+            $form->get('Lastname')->setData($currentUser->getLastName());
+            $form->get('guestsNumber')->setData($currentUser->getGuestsNumber());
+            $form->get('allergie')->setData($currentUser->getAllergie());
+        }
 
         // Récupération des données du formulaire envoyé par POST et vérification
         // si le formulaire a été soumis
@@ -39,7 +67,7 @@ class ReservationController extends AbstractController
             $entityManager->flush();
 
             // Redirection vers la page de succès de la réservation
-            return $this->redirectToRoute('app_reservation');
+            return $this->redirectToRoute('reservation_success');
         }
 
         // Affichage de la page de réservation avec le formulaire
@@ -49,7 +77,7 @@ class ReservationController extends AbstractController
         ]);
     }
 
-    /* #[Route('/reservation/success', name: 'reservation_success')]
+    #[Route('/reservation/success', name: 'reservation_success')]
     public function success(RestaurantScheduleRepository $restaurantScheduleRepository): Response
     {
         $restaurantSchedules = $restaurantScheduleRepository->findAll();
@@ -57,7 +85,7 @@ class ReservationController extends AbstractController
         return $this->render('reservation/success.html.twig', [
             'restaurantSchedules' => $restaurantSchedules
         ]);
-    }*/
+    }
 
     // Crée une route pour accéder à cette fonction
     #[Route('/reservation/gettimeslots', name: 'get_time_slots', methods: ['GET', 'POST'])]
@@ -126,7 +154,7 @@ class ReservationController extends AbstractController
                 }
             }
         }
-   
+
         for ($day = 0; $day < 1; $day++) {
             // Calcule la date du jour courant
             $currentDateForDay = clone $currentDate;
@@ -156,7 +184,6 @@ class ReservationController extends AbstractController
                     if ($place == 0) {
                         $isAvailable = false;
                     }
-
                     // Ajoute le créneau horaire à la liste avec ses informations
                     $timeSlots2[] = [
                         'heure' => $heureString,
@@ -170,14 +197,12 @@ class ReservationController extends AbstractController
                 }
             }
         }
-
         // Retourne la liste des créneaux horaires
         return new JsonResponse([
             'slot' => $timeSlots,
             'slot2' => $timeSlots2
         ]);
     }
-
 
     private function getTotalReservedSeats(EntityManagerInterface $entityManager, string $date, string $heure): int
     {

@@ -1,11 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réservation effectuée{% endblock %}
+{% block title %}Réservation effectuée
+{% endblock %}
 
 {% block content %}
-    <div class="container my-5">
-        <div class="alert alert-success text-center">
-            Votre réservation a bien été enregistrée !
-        </div>
-    </div>
+	<main class="main_container container-fluid">
+		<div class="logoQAw">
+			<img src="{{ asset('assets/img/logoQAw.png') }}" alt="" class="logoQAw">
+		</div>
+		<div class="carteSection">
+			<div class="col col-lg-6 col-sm-12 col-md-7 flexCol">
+				<div class="groupTitleBtn">
+					<div class="card p-3 schudeleContainer">
+						<div class="card-body">
+							<div class="alert alert-success text-center">
+								Merci, votre réservation a bien été enregistrée !
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 {% endblock %}
