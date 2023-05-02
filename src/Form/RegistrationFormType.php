@@ -5,16 +5,15 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\GreaterThanOrEqual;
-use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
@@ -55,22 +54,32 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passes ne sont pas identique.',
                 'label' => 'Votre mot de passe',
                 'required' => true,
-                'constraints' => new Length([
-                    'min' => 2,
-                    'max' => 50
-                ]), //Longueur de 2 min à 50 caractères Max
                 'first_options' => [
                     'label' => 'Mot de passe',
                     'attr' => [
-                        'placeholder' => 'Veuillez de saisir votre mot de passe'
+                        'placeholder' => 'Veuillez saisir votre mot de passe'
                     ]
                 ],
                 'second_options' => [
                     'label' => 'Confirmer votre mot de passe',
                     'attr' => [
-                        'placeholder' => 'Veuillez de confirmer votre mot de passe'
+                        'placeholder' => 'Veuillez confirmer votre mot de passe'
                     ]
-                ]
+                ],
+                'constraints' => ([
+                    new Length([
+                        'min' => 8,
+                        'max' => 50,
+                        //Longueur de 8 min à 50 caractères Max
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères.',
+                        'maxMessage' => 'Votre mot de passe doit contenir au maximum {{ limit }} caractères.',
+                    ]),
+                    // expression regulière regex pour le mot de passe
+                    new Regex([
+                        'pattern' => '/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/',
+                        'message' => 'Votre mot de passe doit contenir au moins un chiffre, une lettre, un caractère spécial (@$!%*#?&) et avoir au moins 8 caractères.'
+                    ]),
+                ])
             ])
 
             ->add('guestsNumber', IntegerType::class, [

@@ -63,14 +63,14 @@
 		<section class="availabilityRight">
 			<div class="card-body reservationAvailabilityCard">
 				<div class="form-group text-center dinerAvailability">
-					<h5 class=""><b>~ Nos disponibilités pour le dîner ~</b></h5>
+					<h5 class=""><b>~ Nos disponibilités pour le dîner * ~</b></h5>
 					<div class="availability-slots">
 						<div id="time-slots" class="mt-3"></div>
 					</div>
 				</div>
 				<hr>
 				<div class="form-group text-center lunchAvailability">
-					<h5 class=""><b>~ Nos disponibilités pour le déjeuner ~</b></h5>
+					<h5 class=""><b>~ Nos disponibilités pour le déjeuner * ~</b></h5>
 					<div class="availability-slots">
 						<div id="time-slots2" class="mt-3"></div>
 					</div>
@@ -86,8 +86,11 @@
 						<div class="legendRedText">Créneaux horaires non disponibles.</div>
 					</div>
 					<hr>
-					<p class="info">Vous pouvez réserver pour 12 personnes maximum, au delàs, merci de nous contacter au <b>06 66 66 66 66</b>
+					{% for restaurant in restaurant %}
+					<p class="info">Pour une réservation au delàs de 12 personnes, merci de nous contacter :</p><p> par téléphone au <b>{{ restaurant.phoneNumber }}.</b></p><p> ou par e-mail à <email><b>{{ restaurant.email }}.</b></email>
 					</p>
+					<p><em> * Notre salle contient {{ restaurant.maxSeats }} couverts maximum.</em></p>
+					{% endfor %}
 				</div>
 			</section>
 		</main>

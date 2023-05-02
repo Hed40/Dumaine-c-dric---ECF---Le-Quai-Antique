@@ -22,10 +22,11 @@ class ReservationController extends AbstractController
     }
 
     #[Route('/reservation', name: 'app_reservation')]
-    public function index(Request $request, EntityManagerInterface $entityManager, RestaurantScheduleRepository $restaurantScheduleRepository): Response
+    public function index(Request $request, EntityManagerInterface $entityManager, RestaurantScheduleRepository $restaurantScheduleRepository, RestaurantRepository $restaurantRepository ): Response
     {
         // Récupérez les horaires des restaurants ici
         $restaurantSchedules = $restaurantScheduleRepository->findAll();
+        $restaurant = $restaurantRepository->findAll();
         // Instanciation d'un nouvel objet Reservation
         $reservation = new Reservation();
         // Création d'un formulaire de type ReservationFormType
@@ -74,6 +75,7 @@ class ReservationController extends AbstractController
         return $this->render('reservation/index.html.twig', [
             'form' => $form->createView(),
             'restaurantSchedules' => $restaurantSchedules,
+            'restaurant' =>$restaurant,
         ]);
     }
 

@@ -15,60 +15,68 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light">
-				<div class="container-fluid">
-				<span class="navbarLogo">Le Quai Antique - Restaurant</span>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link" id="btnAccueil" aria-current="page" href="{{ path('app_accueil') }}"><i class="fa-solid fa-house" style="color: #ffbb00 "></i><span class="ms-3">Accueil</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="btnMenus" href="{{path('app_menus')}}">
-								<i class="fa-solid fa-utensils" style="color: #ffbb00;"></i><span class="ms-3">Les menus du chef Michant</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" id="btnCard" href="{{path('app_restaurant_menu')}}">
-								<i class="fa-sharp fa-solid fa-bowl-food" style="color: #ffbb00;"></i><span class="ms-3">À la carte !</span>
+							<div class="container-fluid">
+				<img src="{{ asset('assets/img/logoQAnav.png') }}" alt="" class="logoQAnav">
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" id="btnAccueil" aria-current="page" href="{{ path('app_accueil') }}">
+									<i class="fa-solid fa-house" style="color: #ffbb00 "></i>
+									<span class="ms-3">Accueil</span>
 								</a>
-						</li>
-						<li class="nav-item me-3">
-							<a class="nav-link" id="btnTable" href="{{path('app_reservation')}}">
-							<i class="fa-solid fa-square-check" style="color: #ffbb00;"></i>
-							<span class="ms-3">Réserver une table</span>
-							</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle Members" id="btnMembers" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="fa-solid fa-user" style="color: #ffbb00;"></i><span class="ms-3">Membres</span>
-							</a>
-							<ul class="dropdown-menu">
-								{% if app.User %}
-									<li>
-										<a class="dropdown-item" href="{{ path('app_account') }}">Mon compte</a>
-									</li>
-									{% if is_granted('ROLE_ADMIN') %}
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="btnMenus" href="{{path('app_menus')}}">
+									<i class="fa-solid fa-utensils" style="color: #ffbb00;"></i>
+									<span class="ms-3">Les menus du chef Michant</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="btnCard" href="{{path('app_restaurant_menu')}}">
+									<i class="fa-sharp fa-solid fa-bowl-food" style="color: #ffbb00;"></i>
+									<span class="ms-3">À la carte !</span>
+								</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link" id="btnTable" href="{{path('app_reservation')}}">
+									<i class="fa-solid fa-square-check" style="color: #ffbb00;"></i>
+									<span class="ms-3">Réserver une table</span>
+								</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle Members" id="btnMembers" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="fa-solid fa-user" style="color: #ffbb00;"></i>
+									<span class="ms-3">Membres</span>
+								</a>
+								<ul class="dropdown-menu">
+									{% if app.User %}
 										<li>
-											<a class="dropdown-item" href="{{ path('app_admin') }}">Administration</a>
+											<a class="dropdown-item" href="{{ path('app_account') }}">Mon compte</a>
+										</li>
+										{% if is_granted('ROLE_ADMIN') %}
+											<li>
+												<a class="dropdown-item" href="{{ path('app_admin') }}">Administration</a>
+											</li>
+										{% endif %}
+										<li>
+											<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+										</li>
+									{% else %}
+										<li>
+											<a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a>
 										</li>
 									{% endif %}
-									<li>
-										<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
-									</li>
-								{% else %}
-									<li>
-										<a class="dropdown-item" href="{{ path('app_register') }}">Inscription</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="{{ path('app_login') }}">Connexion</a>
-									</li>
-								{% endif %}
-							</ul>
+								</ul>
+							</li>
 						</li>
-					</li>
+					</div>
 				</div>
 			</nav>
 
@@ -82,7 +90,6 @@
 		<script src="{{ asset('assets/js/reservation.js') }}"></script>
 		<script src="{{ asset('assets/js/navBar.js') }}"></script>
 		<script src="{{ asset('assets/js/galery.js') }}"></script>
-		    <script src="https://kit.fontawesome.com/32bd88b409.js"
-      crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/32bd88b409.js" crossorigin="anonymous"></script>
 	</body>
 </html>
