@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Starter;
 use App\Repository\CategoriesRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -50,5 +51,14 @@ class StarterCrudController extends AbstractCrudController
             // On stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
             // dans la méthode configureFields de StarterCrudController
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos entrées')
+            ->setPageTitle('new', 'Ajouter une entrée')
+            ->setPageTitle('edit', 'Modifier une entrée')
+            ->setPageTitle('detail', 'Détails de l\'entrée');
     }
 }

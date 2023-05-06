@@ -6,6 +6,7 @@ use App\Entity\SetMenu;
 use App\Repository\DessertsRepository;
 use App\Repository\DishRepository;
 use App\Repository\StarterRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
@@ -84,5 +85,14 @@ public function configureFields(string $pageName): iterable
             ->setStoredAsCents(false),
         // On stocke le prix en euros et centimes, mais on l'affiche en euros et décimales        
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos formules')
+            ->setPageTitle('new', 'Ajouter une formule')
+            ->setPageTitle('edit', 'Modifier une formule')
+            ->setPageTitle('detail', 'Détails de la formule');
     }
 }

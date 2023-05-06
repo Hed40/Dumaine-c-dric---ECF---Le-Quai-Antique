@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Dish;
 use App\Repository\CategoriesRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -49,5 +50,13 @@ class DishCrudController extends AbstractCrudController
                 ->setStoredAsCents(false),
             // stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
         ];
+    }
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos plats')
+            ->setPageTitle('new', 'Ajouter un plat')
+            ->setPageTitle('edit', 'Modifier un plat')
+            ->setPageTitle('detail', 'Détails du plat');
     }
 }

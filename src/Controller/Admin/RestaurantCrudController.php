@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Restaurant;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -26,5 +27,14 @@ class RestaurantCrudController extends AbstractCrudController
             EmailField::new('email','Adresse email'),
             IntegerField::new('maxSeats','Nombre de places maximum'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer les informations de vos restaurants')
+            ->setPageTitle('new', 'Ajouter les informations de votre restaurant')
+            ->setPageTitle('edit', 'Modifier les informations de votre restaurant')
+            ->setPageTitle('detail', 'Détails des informations de votre restaurant');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Menus;
 use App\Repository\SetMenuRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -58,5 +59,14 @@ class MenusCrudController extends AbstractCrudController
         }),
     // On affiche le nom des catégories dans le choix
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos menus')
+            ->setPageTitle('new', 'Ajouter un menu')
+            ->setPageTitle('edit', 'Modifier un menu')
+            ->setPageTitle('detail', 'Détails du menu');
     }
 }

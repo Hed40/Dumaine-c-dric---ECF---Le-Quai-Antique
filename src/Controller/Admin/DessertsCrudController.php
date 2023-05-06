@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Desserts;
 use App\Repository\CategoriesRepository;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -51,5 +52,14 @@ class DessertsCrudController extends AbstractCrudController
             ->setStoredAsCents(false),
         // On stocke le prix en euros et centimes, mais on l'affiche en euros et décimales
         ];
+    }
+// Permet de modifier le titre des pages de l'interface d'administration
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos desserts')
+            ->setPageTitle('new', 'Ajouter un dessert')
+            ->setPageTitle('edit', 'Modifier un dessert')
+            ->setPageTitle('detail', 'Détails du dessert');
     }
 }
