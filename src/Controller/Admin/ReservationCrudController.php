@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -27,6 +28,15 @@ class ReservationCrudController extends AbstractCrudController
             TextField::new('heure','Heure de réservation'),
             IntegerField::new('guestsNumber','Nombre de couverts'),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setPageTitle('index', 'Gérer vos réservations')
+            ->setPageTitle('new', 'Ajouter une réservation')
+            ->setPageTitle('edit', 'Modifier une réservation')
+            ->setPageTitle('detail', 'Détails de vos réservations');
     }
 
 }

@@ -78,7 +78,7 @@ class Drinks
         return $this->categorie;
     }
 
-    public function setType(?Categories $categorie): self
+    public function setCategorie(?Categories $categorie): self
     {
         $this->categorie = $categorie;
 

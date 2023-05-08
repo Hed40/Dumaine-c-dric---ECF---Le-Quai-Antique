@@ -35,7 +35,7 @@ class DashboardController extends AbstractDashboardController
     }
 
     public function configureMenuItems(): iterable
-    {
+    {  
         yield MenuItem::submenu("GESTION DES UTILISATEURS", "fa fa-users")->setSubItems([
             MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class)
         ]);
@@ -47,16 +47,18 @@ class DashboardController extends AbstractDashboardController
         ]);
 
         yield MenuItem::subMenu('GESTION DE LA CARTE DU RESTAURANT', 'fa fa-cutlery')->setSubItems([
+            MenuItem::linkToCrud('Catégories de Produits', 'fa fa-clone', Categories::class),
             MenuItem::linkToCrud('Entrées', 'fa fa-cutlery', Starter::class),
             MenuItem::linkToCrud('Plats', 'fa fa-cutlery', Dish::class),
             MenuItem::linkToCrud('Desserts', 'fa fa-cutlery', Desserts::class),
             MenuItem::linkToCrud('Boissons', 'fa fa-glass', Drinks::class),
             MenuItem::linkToCrud('Menus', 'fa fa-cutlery', Menus::class),
             MenuItem::linkToCrud('Formules', 'fa fa-cutlery', SetMenu::class),
-            MenuItem::linkToCrud('Catégories de Produits', 'fa fa-product', Categories::class),
         ]);
         yield MenuItem::subMenu('GESTION DES GALERIES','fa fa-picture-o')->setSubItems([
             MenuItem::linkToCrud("Galerie d'image - Accueil", 'fa fa-picture-o', Gallery::class),
         ]);
+      
+        yield MenuItem::linkToUrl('RETOUR VERS LE SITE WEB', 'fa fa-arrow-left', '/');
     }
 }

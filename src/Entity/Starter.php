@@ -22,7 +22,7 @@ class Starter
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'no')]
+    #[ORM\ManyToOne(inversedBy: 'starter')]
     private ?Categories $categorie = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]

@@ -31,7 +31,7 @@ class Desserts
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\OneToMany(mappedBy: 'Dessert', targetEntity: SetMenu::class)]
+    #[ORM\OneToMany(mappedBy: 'desserts', targetEntity: SetMenu::class)]
     private Collection $setMenus;
 
     public function __construct()

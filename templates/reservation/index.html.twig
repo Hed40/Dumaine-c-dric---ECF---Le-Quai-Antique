@@ -5,14 +5,14 @@
 {% block content %}
 	<main class="main_container container-fluid">
 		<section class="logoLeft">
-			<div class="logoQAw">
-				<img src="{{ asset('assets/img/logoQAw.png') }}" alt="" class="logoQAw">
-			</div>
 		</section>
 		<section class="cardMiddle">
-			<div class="card p-3 schudeleContainer">
+			<div class="card schudeleContainer">
+								<div class="logoQAw">
+						<img src="{{ asset('assets/img/logoQAnavBlack.png') }}" alt="" class="logoQAw">
+					</div>
 				<div class="">
-					<h3 class="text-center"><b>Réservez une table !</b></h3>
+					<h1 class="text-center"><b>Réservez une table !</b></h1>
 				</div>
 				<div class="card-body">
 					{{ form_start(form) }}

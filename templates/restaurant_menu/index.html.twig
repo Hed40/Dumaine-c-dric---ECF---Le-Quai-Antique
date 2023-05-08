@@ -4,18 +4,18 @@
 {% endblock %}
 {% block content %}
 	<main class="main_container container-fluid">
-		<div class="logoQAw">
-			<img src="{{ asset('assets/img/logoQAw.png') }}" alt="" class="logoQAw">
-		</div>
 		<div class="carteSection">
 			<div id="titleMenu" class="col col-lg-6 col-sm-12 col-md-7 flexCol">
 				<div class="groupTitleBtn">
-					<h1 class="headline" style="text-align: left;">
-						<b>~ Le Quai Antique ~</b>
+					<div class="logoQAw">
+						<img src="{{ asset('assets/img/logoQAnavBlack.png') }}" alt="" class="logoQAw">
+					</div>
+					<h1 class="headline">
+						<b>Le restaurant</b>
 					</h1>
-					<h2 class="headline">À la carte !</h2>
+					<h2 class="headline">Découvrez notre carte !</h2>
 					<a class="scheduleButton btn btn-primary" href="{{ path('app_reservation') }}" title="" role="button">
-						<span>Réservez une table</span>
+						<span>Réservez une table <b>Maintenant</b></span>
 					</a>
 				</div>
 			</div>
@@ -99,20 +99,20 @@
 											<p class="noEntry">Aucun dessert n'a été trouvée.</p>
 										{% else %}
 											<div class="">
-												{% for dessert in dessert %}
+												{% for desserts in desserts %}
 													<div class="list-group-item">
 														<div class="name">~
-															{{ dessert.name }}</div>
+															{{ desserts.name }}</div>
 														<div class="arrow">
 															<span></span>
 														</div>
 														<div class="price">
-															{{ dessert.price }}
+															{{ desserts.price }}
 															€
 															<div class="TTC">TTC</div>
 														</div>
 													</div>
-													<div class="desc">{{ dessert.description }}</div>
+													<div class="desc">{{ desserts.description }}</div>
 												{% endfor %}
 											</div>
 										{% endif %}
@@ -129,15 +129,15 @@
 											<p class="noEntry">Aucune boisson n'a été trouvée.</p>
 										{% else %}
 											<div class="">
-												{% for drink in drink %}
+												{% for drinks in drinks %}
 													<div class="list-group-item">
 														<div class="name">~
-															{{ drink.brand }}</div>
+															{{ drinks.brand }}</div>
 														<div class="arrow">
 															<span></span>
 														</div>
 														<div class="price">
-															{{ drink.price }}
+															{{ drinks.price }}
 															€
 															<div class="TTC">TTC</div>
 														</div>

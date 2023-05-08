@@ -24,7 +24,7 @@ class RestaurantMenuController extends AbstractController
         $starters = $StarterRepository->findAll();
         $setMenu = $SetMenuRepository->findAll();
         $dish = $SetDishRepository->findAll();
-        $dessert = $SetDessertsRepository->findAll();
+        $desserts = $SetDessertsRepository->findAll();
         $drink = $SetDrinksRepository->findAll();
 
         return $this->render('restaurant_menu/index.html.twig', [
@@ -32,8 +32,8 @@ class RestaurantMenuController extends AbstractController
             'starters' => $starters,
             'setMenu' => $setMenu,
             'dish' => $dish,
-            'dessert' => $dessert,
-            'drink' => $drink,
+            'desserts' => $desserts,
+            'drinks' => $drink,
         ]);
     }
 }
