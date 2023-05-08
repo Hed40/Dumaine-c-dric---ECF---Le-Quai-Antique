@@ -15,8 +15,8 @@
 	<body>
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light">
-							<div class="container-fluid">
-				<img src="{{ asset('assets/img/logoQAnav.png') }}" alt="" class="logoQAnav">
+				<div class="container-fluid">
+					<img src="{{ asset('assets/img/logoQAnav.png') }}" alt="" class="logoQAnav">
 
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -77,19 +77,18 @@
 							</li>
 						</li>
 					</div>
-				</div>
-			</nav>
-
-		</header>
-		{% block content %}{% endblock %}
-		{% block footer %}
-			{% include 'footer/index.html.twig' %}
-		{% endblock %}
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
-		<script src="{{ asset('assets/js/reservation.js') }}"></script>
-		<script src="{{ asset('assets/js/navBar.js') }}"></script>
-		<script src="{{ asset('assets/js/galery.js') }}"></script>
-		<script src="https://kit.fontawesome.com/32bd88b409.js" crossorigin="anonymous"></script>
+				</nav>
+			</header>
+			{% block content %}{% endblock %}
+			{% block footer %}
+				{% include 'footer/index.html.twig' %}
+			{% endblock %}
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+			<script src="{{ asset('assets/js/reservation.js') }}"></script>
+			<script src="{{ asset('assets/js/navBar.js') }}"></script>
+			<script src="{{ asset('assets/js/galery.js') }}"></script>
+			<script src="https://kit.fontawesome.com/32bd88b409.js" crossorigin="anonymous"></script>
+		</body>
 	</body>
 </html>

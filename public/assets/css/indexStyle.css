@@ -766,11 +766,6 @@ aside {
     align-items: center;
   }
 
-  .starterCaps {
-    display: flex;
-    width: 100%;
-  }
-
   .subtitleMainCard,
   .MainCardTitle {
     display: flex;
@@ -895,6 +890,7 @@ td {
 h5 {
   display: flex;
   justify-content: center;
+  font-size: 2.2rem;
 }
 
 .main_timetables {
@@ -908,7 +904,7 @@ h5 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px dashed;
+  border: 4px dashed;
   border-radius: 10px;
   width: 95%;
   margin-bottom: 5%;
@@ -950,6 +946,7 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 body::-webkit-scrollbar {
@@ -1077,12 +1074,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
   padding: 10px;
 }
 
 .dishCaps,
 .starterCaps {
-  padding: 10px;
+  padding: 15px;
 }
 
 .list-group-item {
@@ -1236,8 +1234,9 @@ footer {
 }
 .ms-3 {
   margin-left: 1rem !important;
-  font-size: 2rem;
+  font-size: 2.5rem;
   padding-left: 20px;
+  line-height: 2;
 }
 
 .navbar-nav .dropdown-menu {
@@ -1280,9 +1279,9 @@ aside {
   justify-content: center;
   align-items: center;
   border: #000000 solid 1px;
-  border-radius: 8px;
   width: 100%;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .galeryImg {
@@ -1329,7 +1328,7 @@ aside {
 
 .galeryCardtitle {
   display: none;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .galeryTitleContainer {
