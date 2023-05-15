@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&display=swap");
 
 /*VERSION MOBILE*/
-@media only screen and (max-width: 767px) {
-  .mainPersoCcontainer {
+@media only screen and (max-width: 1024px) and (orientation: portrait){
+  .mainPersoContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -14,19 +14,17 @@
     min-height: 100vh;
   }
 
-  /*Bloc left*/
-
   .sectionContainerLeft {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.6);
-    height: 80%;
-    border-radius: 4px;
+    border-radius: 1.5rem;
+    margin: 20px;
     padding-right: 30px;
     padding-top: 30px;
     padding-left: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 30px;;
   }
 
   .mainSectionContainerLeft {
@@ -37,15 +35,23 @@
   .titleContainerLeft {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .titleLeft {
     display: flex;
+    font-size: 3rem;
+    font-weight: bold;
   }
 
   .description {
     display: flex;
+    font-size: 1.5rem;
+  }
+
+  .accountNamed{
+    font-size: 2rem;
+
   }
 
   .FormContainerLeft {
@@ -81,12 +87,24 @@
   }
 
   .tableReservation th {
-    text-align: left;
+    text-align: center;
     background-color: #f2f2f2;
   }
 
   .tableReservation tr:nth-child(even) {
     background-color: #f2f2f2;
+  }
+
+  .th{
+    font-size: 1.8rem;
+  }
+  .td{
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .tr{
+    font-size: 1.5rem;
   }
 
   /*Bloc right*/
@@ -96,14 +114,12 @@
     flex-direction: column;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.6);
-    width: 100%;
-    height: 30%;
-    border-radius: 4px;
-    margin-top: 35px;
+    border-radius: 1.5rem;
+    margin: 20px;
     padding-right: 30px;
     padding-top: 30px;
     padding-left: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 30px;;
   }
 
   .sectionContainerAvailable {
@@ -131,35 +147,114 @@
     align-items: center;
   }
 
-  .titleContaineRight {
+  .reservationAvailabilityAccountCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
   .reservationFormContainer {
     display: flex;
+    flex-direction: column;
     margin-top: 5px;
     justify-content: space-between;
     width: 100%;
   }
 
-  .availableFormContainer {
-  }
-
-  /*----------------------*/
+  h2, h3 {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 600;
 }
-/*Stylepageperso*/
-@media only screen and (min-width: 768px) {
-  .mainPersoCcontainer {
+
+#time-slots, #time-slots2 {
+  display: flex;
+  justify-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.legendAndInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.legendGreen {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  gap: 5px;
+}
+
+.legendGreenCub {
+  width: 60px;
+  height: 60px;
+  background-color: #198754;
+  opacity: 70%;
+}
+
+.legendGreenText{
+  font-size: 1.5rem;
+}
+
+.legendRed {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  gap: 5px;
+}
+
+.legendRedCub {
+  width: 60px;
+  height: 60px;
+  background-color: #dc3545;
+  opacity: 70%;
+}
+
+.legendRedText{
+  font-size: 1.5rem;
+}
+
+.info {
+  display: flex;
+  font-size: 2rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-style: italic;
+}
+
+.btn-primary{
+  width: 200px;
+  height: 80px;
+  font-size: 1.8rem;
+}
+
+}
+/*Desktop Version*/
+@media only screen and (min-width: 1024px) {
+  .mainPersoContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-wrap: nowrap;
     background-color: black;
-    background-image: url("../img/snack.jpg");
+    background-image: url(../img/Hamb.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    padding: 5;
-    min-height: 100vh;
-  }
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem;
+ }
 
   /*Bloc left*/
 
@@ -167,16 +262,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     background-color: rgba(255, 255, 255, 0.6);
-    width: 40vw;
-    height: 80vh;
-    margin-top: 35px;
-    border-radius: 4px;
-    padding-left: 50px;
-    padding-right: 50px;
+    width: 70%;
+    margin: 20px;
+    border-radius: 1.5rem;
     padding-top: 30px;
-    padding-left: 50px;
     padding-bottom: 30px;
   }
 
@@ -192,20 +282,17 @@
 
   .titleLeft {
     display: flex;
-  }
-
-  .description {
-    display: flex;
+    justify-content: center;
   }
 
   .FormContainerLeft {
     display: flex;
-    justify-content: space-evenly;
+    gap: 20px;
   }
 
   .FormContainerRight {
     display: flex;
-    justify-content: space-evenly;
+    gap: 20px;
   }
 
   .row-cols-5 > * {
@@ -241,12 +328,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     background-color: rgba(255, 255, 255, 0.6);
-    width: 40vw;
-    height: 80vh;
-    border-radius: 4px;
-    margin-top: 35px;
+    border-radius: 1.5rem;
+    margin-top: 20px;
     padding-right: 50px;
     padding-top: 30px;
     padding-left: 50px;
@@ -281,6 +365,18 @@
     width: 100%;
   }
 
-  /*----------------------*/
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-style: italic;
 }
 
+.form-control{
+  width: 300px;
+}
+
+#newsletter1{
+  margin-right: 2rem;
+}
+}

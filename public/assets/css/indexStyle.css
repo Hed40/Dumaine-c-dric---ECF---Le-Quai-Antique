@@ -41,7 +41,7 @@ h5 {
 .main_container {
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: flex-start;
   background-color: black;
   background-image: url(../img/Hamb.jpg);
   background-repeat: no-repeat;
@@ -62,8 +62,10 @@ h5 {
 
   background-color: rgba(255, 255, 255, 0.4);
   width: 20vw;
-  padding: 3rem;
-  margin-top: 10vh;
+  padding-top: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-top: 5vh;
   margin-bottom: 10vh;
 }
 
@@ -72,7 +74,7 @@ h5 {
   margin-top: 10vh;
   margin-bottom: 10vh;
   width: 20vw;
-  padding: 3rem;
+  padding: 2rem;
 }
 
 .restaurantCardSection {
@@ -174,6 +176,13 @@ hr {
   align-items: center;
 }
 
+.newsletter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 body::-webkit-scrollbar {
   width: 0em;
 }
@@ -206,6 +215,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 !important;
 }
 
 .logo_social {
@@ -452,7 +462,6 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: #000000 solid 1px;
   border-radius: 5px;
   width: 100%;
   overflow: hidden;
@@ -525,8 +534,8 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 240px;
-  height: 90px;
+  width: 240px !important;
+  height: 90px !important;
   font-size: x-large;
   margin-top: 30px;
 }
@@ -546,6 +555,8 @@ aside {
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #555;
   --bs-btn-disabled-border-color: #555;
+  width: 180px;
+  height: 60px;
 }
 
 .groupTitleBtn {
@@ -627,7 +638,7 @@ aside {
     align-items: center;
     width: 100%;
     border-radius: 8px;
-    padding: 10px;
+    margin-right: 50px;
   }
   
   .reservationAvailabilityCard{
@@ -705,6 +716,7 @@ aside {
 
   * {
     margin: 0;
+    overflow-x: hidden;
   }
 
   body{
@@ -1383,9 +1395,9 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 480px;
-  height: 180px;
-  font-size: 3rem;
+  width: 480px !important;
+  height: 180px !important;
+  font-size: 3.2rem!important;
   margin-top: 30px;
   border-radius: 8px;
 }
@@ -1581,6 +1593,11 @@ optgroup {
 
   * {
     margin: 0;
+    overflow-x: hidden;
+  }
+
+  body{
+    width: 100vw;
   }
   
   main {
@@ -1605,21 +1622,50 @@ optgroup {
     --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
     display: flex;
     flex-direction: column;
-    padding-left: 0;
+    padding-left: 20px;
     padding-top: 10px;
     margin-bottom: 0;
     list-style: none;
   }
 
+  .btn-success {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #198754;
+    --bs-btn-border-color: #198754;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #157347;
+    --bs-btn-hover-border-color: #146c43;
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #146c43;
+    --bs-btn-active-border-color: #13653f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #198754;
+    --bs-btn-disabled-border-color: #198754;
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
 
-  .main_container{
+  .fa-solid, .fas {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+  .main_container {
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
+    background-color: black;
+    background-image: url(../img/Hamb.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 4rem;
   }
 
   .groupTitleBtn{
@@ -1627,11 +1673,6 @@ optgroup {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .starterCaps {
-    display: flex;
-    width: 100%;
   }
 
   .subtitleMainCard,
@@ -1652,51 +1693,67 @@ optgroup {
     color: #fff;
   }
 
+  label {
+    display: inline-block;
+    font-size: 2rem;
+}
+
 
 h1,
 h2,
 h3,
 h4,
 h5 {
-
   font-family: "Cardo", serif;
 }
 
+
+h2,
+h3
+{
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h5{
+  font-size: 2.2rem;
+}
+
 .logoQAw {
-  display: none;
-  width: 20vw;
-  height: 75vh;
+  display: flex;
+  width: 50vw;
 }
 
 .logoQAnav {
   display: flex;
-  width: 180px;
-  height: 60px;
-}
-
-.main_container {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  background-color: black;
-  background-image: url(../img/Hamb.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  justify-content: center;
+  width: 210px;
+  height: 70px;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .availabilityRight,
 .schudeleContainer,
 .registerContainer {
 
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.4);
   width: 100%;
+  padding: 5rem;
+  border-radius: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .loggingContainer {
-  background-color: rgba(255, 255, 255, 0.7);
-  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0.4);
+  height: auto;
+  border-radius: 1.5rem;
+  padding: 5rem !important;
+  width: 95vw;
+}
+
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 100%;
 }
 
 .restaurantCardSection {
@@ -1731,6 +1788,7 @@ td {
   justify-content: center;
   align-items: center;
   margin-bottom: 2%;
+  font-size: 1.5rem;
   width: 33%;
 }
 
@@ -1742,6 +1800,7 @@ td {
 h5 {
   display: flex;
   justify-content: center;
+  font-size: 2.2rem;
 }
 
 .main_timetables {
@@ -1755,7 +1814,7 @@ h5 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px dashed;
+  border: 4px dashed;
   border-radius: 10px;
   width: 95%;
   margin-bottom: 5%;
@@ -1764,6 +1823,7 @@ h5 {
 .timetables_title {
   color: brown;
   margin-top: 3%;
+
 }
 
 hr {
@@ -1789,12 +1849,14 @@ hr {
   width: 33%;
   color: brown;
   font-weight: 500;
+  font-size: 1.5rem;
 }
 
 .newsletter_container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
 
 body::-webkit-scrollbar {
@@ -1823,6 +1885,7 @@ footer {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .social{
@@ -1831,6 +1894,11 @@ footer {
   align-items: center;
 }
 
+.newsletter {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
 .logo_social {
   display: flex;
   justify-content: center;
@@ -1863,7 +1931,7 @@ footer {
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 #titleMenu {
@@ -1873,11 +1941,9 @@ footer {
   justify-content: center;
   background-color: rgba(255, 255, 255, 0.4);
   height: auto;
-  border-radius: 8px;
-  padding-left: 30px;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-right: 30px;
+  border-radius: 1.5rem;
+  padding: 5rem;
+  width: 95vw;
 }
 
 /*MENUS - CARTE*/
@@ -1924,12 +1990,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
   padding: 10px;
 }
 
 .dishCaps,
 .starterCaps {
-  padding: 10px;
+  padding: 15px;
 }
 
 .list-group-item {
@@ -1947,12 +2014,13 @@ footer {
   display: flex;
   padding: 5px;
   padding-bottom: 0;
+  font-size: 2rem;
 }
 
 .desc {
-  font-size: 0.7rem;
+  font-size: 1.5rem;
   font-style: italic;
-  padding-left: 35px !important;
+  padding-left: 50px !important;
 }
 
 .span {
@@ -2059,24 +2127,56 @@ footer {
 .navbar-toggler {
   padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
   font-size: var(--bs-navbar-toggler-font-size);
-  line-height: 0.5;
+  line-height: 0.1;
   color: #ffbb00;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 0.5px solid transparent;
   border-radius: var(--bs-navbar-toggler-border-radius);
   transition: var(--bs-navbar-toggler-transition);
+  font-size: 3rem;
 }
 
 .navbar-toggler-icon {
   display: inline-block;
-  width: 2em;
-  height: 2em;
+  width: 1em;
+  height: 1em;
   margin: 10px;
   vertical-align: middle;
   background-image: var(--bs-navbar-toggler-icon-bg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+}
+.ms-3 {
+  margin-left: 1rem !important;
+  font-size: 1rem;
+  padding-left: 5px;
+  line-height: 1;
+}
+
+.social{
+  padding-left: 20px;
+  font-size: 2rem;
+}
+
+.navbar-nav .dropdown-menu {
+  position: static;
+  padding-left: 20px;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  clear: both;
+  font-weight: 400;
+  color: var(--bs-dropdown-link-color);
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  font-size: 2rem;
+  border: 0;
 }
 
 aside {
@@ -2099,9 +2199,9 @@ aside {
   justify-content: center;
   align-items: center;
   border: #000000 solid 1px;
-  border-radius: 8px;
   width: 100%;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .galeryImg {
@@ -2148,7 +2248,7 @@ aside {
 
 .galeryCardtitle {
   display: none;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .galeryTitleContainer {
@@ -2171,10 +2271,11 @@ aside {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 240px;
-  height: 90px;
-  font-size: x-large;
+  width: 480px !important;
+  height: 180px !important;
+  font-size: 3.2rem!important;
   margin-top: 30px;
+  border-radius: 8px;
 }
 
 .btn-primary {
@@ -2193,7 +2294,6 @@ aside {
   --bs-btn-disabled-bg: #555;
   --bs-btn-disabled-border-color: #555;
 }
-
 
 .groupTitleBtn {
   width: 100%;
@@ -2224,7 +2324,7 @@ aside {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  width: 100vw;
 }
 
 /* Reservation*/
@@ -2245,21 +2345,10 @@ aside {
   #time-slots2{
     display: flex;
     justify-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-wrap: wrap;
     gap: 9px;
     }
-  
-  .loggingSection,
-  .homeSection,
-  .carteSection,
-  .menuSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    width: 95vw;
-  }
   
   .logoLeft,
   .cardMiddle,
@@ -2269,8 +2358,8 @@ aside {
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 8px;
-    padding-bottom: 10px;
+    border-radius: 1.5rem;
+    
   }
   
   .reservationAvailabilityCard{
@@ -2279,17 +2368,52 @@ aside {
     align-items: center;
   }
 
+  .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-label {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  padding-left: 0.5rem;
+}
+
+optgroup {
+  font-size: 1rem;
+}
+
   
   .lunchAvailability,
-  .dinerAvailability,
+  .dinerAvailability {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  align-items: flex-start;
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+  }
+
   .legendAndInfo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    border-radius: 8px;
-    padding: 10px;
   }
 
   .legendGreen{
@@ -2303,8 +2427,8 @@ aside {
   }
   
   .legendGreenCub{
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     background-color: #198754;
 
     opacity: 70%;
@@ -2316,13 +2440,13 @@ aside {
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    height: 20px;
+    height: 1rem;
     gap: 5px;
   }
   
   .legendRedCub{
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     background-color: #dc3545;
     opacity: 70%;
   }
@@ -2336,7 +2460,7 @@ aside {
   
   .legendGreenText
   .legendRedText{
-    font-size:x-small;
+    font-size:larger;
     color: #000000;
   }
 }
