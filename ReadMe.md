@@ -84,7 +84,7 @@ Création de la base de données
 
 * L’application Symfony devrait maintenant être accessible à l'adresse [**http://localhost:8000**](http://localhost:8000).
 
-* Connexion à l’interface d’administration**
+## **Connexion à l’interface d’administration de l’application**
 
 Afin de vous connecter en tant qu’administrateur, il faudra renseigner les informations de connexion suivantes dans la section membres/ connexion de l’application :
 
