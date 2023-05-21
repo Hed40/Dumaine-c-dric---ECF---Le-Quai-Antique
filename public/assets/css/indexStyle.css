@@ -184,7 +184,7 @@ hr {
 }
 
 body::-webkit-scrollbar {
-  width: 0em;
+  width: 0;
 }
 
 body::-webkit-scrollbar-track {
@@ -2465,13 +2465,3 @@ optgroup {
   }
 }
 
-/*Pour les smartphones :
-
-Largeur d'écran inférieure à 768 pixels : @media screen and (max-width: 767px)
-Largeur d'écran comprise entre 768 et 991 pixels : @media screen and (min-width: 768px) and (max-width: 991px)
-Largeur d'écran supérieure à 992 pixels : @media screen and (min-width: 992px)
-Pour les tablettes :
-
-Largeur d'écran comprise entre 768 et 991 pixels : @media screen and (min-width: 768px) and (max-width: 991px)
-Largeur d'écran supérieure à 992 pixels : @media screen and (min-width: 992px)
-Il est important de noter que ces dimensions peuvent varier en fonction du design de votre site web et de la manière dont vous souhaitez que celui-ci soit affiché sur les différents appareils.

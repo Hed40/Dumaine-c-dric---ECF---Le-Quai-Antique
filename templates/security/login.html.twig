@@ -7,9 +7,6 @@
 	<main class="main_container container-fluid logging">
 		<div class="container-fluid">
 			<form method="post">
-				{% if error %}
-					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-				{% endif %}
 				{% if app.user %}
 					<div class="mb-3">
 						Vous êtes connecté en tant que
@@ -19,9 +16,9 @@
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="card loggingContainer">
-											<div class="logoQAw">
-						<img src="{{ asset('assets/img/logoQAnavBlack.png') }}" alt="" class="logoQAw">
-					</div>
+							<div class="logoQAw">
+								<img src="{{ asset('assets/img/logoQAnavBlack.png') }}" alt="" class="logoQAw">
+							</div>
 							<div>
 								<h1 class="text-center">Connectez-vous !</h1>
 							</div>
@@ -41,6 +38,9 @@
 										<button class="btn btn-primary btn-block mx-auto" type="submit">Se connecter</button>
 									</div>
 								</div>
+																	{% if error %}
+										<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+									{% endif %}
 							</div>
 						</div>
 					</div>
