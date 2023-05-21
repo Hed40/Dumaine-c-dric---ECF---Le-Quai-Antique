@@ -22,6 +22,11 @@ h5 {
   font-family: "Cardo", serif;
 }
 
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 .navbarLogo{
   color: #fff;
 
@@ -605,7 +610,7 @@ aside {
   #time-slots{
   display: flex;
   justify-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 6px;
   }
@@ -720,7 +725,8 @@ aside {
   }
 
   body{
-    width: 100vw;
+    width: 100%;
+    padding: 0;
   }
   
   main {
@@ -830,6 +836,10 @@ h5 {
   font-family: "Cardo", serif;
 }
 
+h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
 
 h2,
 h3
@@ -849,8 +859,7 @@ h5{
 
 .logoQAnav {
   display: flex;
-  width: 360px;
-  height: 120px;
+  width: 40%;
   margin-left: 1rem;
   margin-bottom: 1rem;
 }
@@ -1262,8 +1271,6 @@ footer {
 
 .navbar-toggler-icon {
   display: inline-block;
-  width: 2em;
-  height: 2em;
   margin: 10px;
   vertical-align: middle;
   background-image: var(--bs-navbar-toggler-icon-bg);
@@ -1707,6 +1714,10 @@ h5 {
   font-family: "Cardo", serif;
 }
 
+h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 
 h2,
 h3
