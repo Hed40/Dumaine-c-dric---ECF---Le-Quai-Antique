@@ -47,7 +47,9 @@ final class Version20230518060610 extends AbstractMigration
 
         $this->addSql("INSERT INTO user (id, firstname, lastname, email, roles, password, guests_number, allergie) VALUES 
         (6, 'hote d\'accueil', 'admin', 'lequaiantique@restaurant.com', '[\"ROLE_ADMIN\"]', '\$2y\$13\$nwlcf6fw6KXiVM3cM2TKB.Nn1/xf.JA.8TRVf7enc.wiA3c6tND8G', '0', 'aucune allergie')");
-    
+
+        $this->addSql("INSERT INTO restaurant (id, name, adresse, phone_number, email, max_seats) VALUES 
+        (1,'le quai antique','Chambery','0666666666','lequaiantique@restaurant.com', 60)");
     }
 
     public function down(Schema $schema): void
@@ -78,5 +80,4 @@ final class Version20230518060610 extends AbstractMigration
         $this->addSql('DROP TABLE `user`');
         $this->addSql('DROP TABLE messenger_messages');
     }
-
 }

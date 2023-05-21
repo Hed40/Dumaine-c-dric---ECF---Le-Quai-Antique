@@ -38,9 +38,9 @@
 										<button class="btn btn-primary btn-block mx-auto" type="submit">Se connecter</button>
 									</div>
 								</div>
-																	{% if error %}
-										<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-									{% endif %}
+								{% if error %}
+									<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+								{% endif %}
 							</div>
 						</div>
 					</div>
