@@ -68,19 +68,19 @@ Dans la console, renseigner les lignes suivante :
 
 Création de la base de données
 
-`  php bin/console doctrine:database:create restaurant `
+` php bin/console doctrine:database:create restaurant `
 
 * Migration de la base en attente disponible depuis le dossier de migration :
 
-`  php bin/console doctrine:migrations:migrate `
+` php bin/console doctrine:migrations:migrate `
 
 *  Démarrez le serveur de développement Symfony :
 
-`  Php bin/ server:start `
+` php bin/ server:start `
 
 **!IMPORTANT : Si vous rencontrez des soucis avec le Symfony/server-bundle, (c’est mon cas, au moment où j’écris ces lignes), lancez directement un server local avec PHP :**
 
-`php -S localhost:8000 -t public`	
+` php -S localhost:8000 -t public`	
 
 * L’application Symfony devrait maintenant être accessible à l'adresse [**http://localhost:8000**](http://localhost:8000).
 
@@ -90,7 +90,7 @@ Afin de vous connecter en tant qu’administrateur, il faudra renseigner les inf
 
 ```Email : lequaiantique@restaurant.com```
 
-```Mot de passe : Utc2x5k3340 !```
+```Mot de passe : Utc2x5k3340!```
 
 
 Vous aurez ainsi un accès à l’interface d’administration de l’application.
